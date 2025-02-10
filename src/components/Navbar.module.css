@@ -1,0 +1,14 @@
+.nav{
+    position: sticky;
+    top: 0;
+}
+.wrap{
+    background: rgba(10,10,10,.8);
+    font-size: 3vw;
+    /* font-weight: bold; */
+}
+
+.wrap{
+    font-family: "CMU Serif", serif;
+    color: #FFF;
+}

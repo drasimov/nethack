@@ -1,7 +1,16 @@
 :root {
   --background: #303030;
   --foreground: #39FF14;
+  --yellow: #ffbd29;
+  --blue: #32f4ff;
+  --purple: #db6fff;
 }
+.cWhite{ color: #FFF}
+.cYellow{ color: var(--yellow)}
+.cBlue{ color: var(--blue)}
+.cPurple{ color: var(--purple)}
+.center{text-align:center}
+.big{font-size: 2.5vw;}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -13,13 +22,12 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "CMU Serif", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -34,9 +42,54 @@ a {
   color: inherit;
   text-decoration: none;
 }
+p {
+  font-size: 1.25vw;
+}
+hr{
+  width: 80%;
+  margin-top: -8px;
+  margin-left: 2px;
+  margin-bottom: 8px;
+  border: 1px solid #FFF;
+}
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+.console{ font-family: 'Courier New', Courier, monospace}
+.serif{ font-family: 'CMU Serif', serif}
+.serifBold{ font-family: 'CMU Serif Bold', serif}
+.serifItalic{ font-family: 'CMU Serif Italic', serif}
+
+.link{ text-decoration:underline}
+
+.bigWrap{
+  width: 85vw;
+  padding: 20px;
+  padding-top: 10px;
+  margin: auto;
+  margin-top: 10px;
+  background: #252525;
+}
+
+@font-face {
+  font-family: 'CMU Serif';
+  src: url('/fonts/CMUNRM.TTF') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CMU Serif Bold';
+  src: url('/fonts/CMUNBX.TTF') format('truetype'); 
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CMU Serif Italic';
+  src: url('/fonts/CMUNTI.TTF') format('truetype'); 
+  font-weight: italic;
+  font-style: normal;
 }

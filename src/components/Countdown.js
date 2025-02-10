@@ -43,7 +43,7 @@ const Countdown = ({ targetDate, label }) => {
     <div className = {styles.wrap}>
         <div className={styles.label}>Time until <b>{label}</b></div>
         <div className={styles.countdown}>{`${f(timeLeft.days)}:${f(timeLeft.hours)}:${f(timeLeft.minutes)}:${f(timeLeft.seconds)}`}</div>
-        <div>{new Date(targetDate).toString()}</div>
+        <div className={styles.label}>{new Date(targetDate).toString()}</div>
     </div>
   );
 };
