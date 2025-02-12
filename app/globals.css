@@ -69,6 +69,31 @@ hr{
   outline: none;
 }
 
+.wrapCheckbox{
+  display: flex;
+  align-items: center;
+}
+.labelCheckbox {
+  display: inline-block;
+  position: relative;
+  user-select: none;
+  border: 1px solid var(--blue);
+  width: 15px;
+  height: 15px;
+  margin-right: 4px;
+}
+.labelCheckbox input {
+  display: none;
+}
+.iconCheck {
+  display: inline-block;
+  opacity: 0; 
+  margin-top: -4px;
+}
+.labelCheckbox input:checked + .iconCheck {
+  opacity: 1; 
+}
+
 /* custom classes */
 .cWhite{ color: #FFF}
 .cBlack{ color: #000}
@@ -77,6 +102,13 @@ hr{
 .cPurple{ color: var(--purple)}
 .bWhite{ background: #FFF}
 .bBlue{ background: var(--blue)}
+
+.bSmooth{ 
+  background: #505050;
+  border-radius: 2px;
+  padding: 2px;
+  padding-bottom: 0px;
+}
 
 .center{text-align:center}
 
@@ -125,11 +157,27 @@ hr{
   transition: 0.3s;
 }
 
+.leftBox{
+  width: 30%;
+  padding-right: 10px;
+  display: inline-block;
+}
+.rightBox{
+  width: 70%;
+  display: inline-block;
+}
+.padBottom{
+  margin-bottom: 10px;
+}
 .projBox{
-  width: 60%;
+  width: 100%;
   background: #000;
   padding: 10px;
   border-radius: 2px;
+}
+.flexBox{
+  display: flex;
+  align-items: top;
 }
 
 .inputWrap{

@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import { useSession } from "next-auth/react";
+import CountdownMini from '@/components/CountdownMini';
 
 const Dashboard = () => {
     const { data: session } = useSession();
@@ -22,17 +23,24 @@ const Dashboard = () => {
             </svg>        
         </span>
     )
+    const iconCheck = (
+        <span className="iconCheck">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"/>
+            </svg>
+        </span>
+    )
 
   return (
     <div>
         <p><span className="cWhite serifBold big">Name's Dashboard</span></p>
         <hr/>
         <p className="cBlue">As a <span className="serifBold">competitor</span>, this is where you can view the progress of the competition and your project.</p>
-        <p className="cYellow">The 2025 competition is currently in the
+        <p className="cYellow">The 2025 Network Hackathon is currently in the
             <span className = "qBox">&nbsp;Closed&nbsp;
                 <span className="tooltip">The Hackathon is <span className="serifBold">Closed</span>. It is currently not accepting work, meaning you may not edit or submit files at this time.</span>
             </span>&gt;
-            <span className = "qBox">&nbsp;Hacking&nbsp;
+            <span className = "qBox">&nbsp;Active&nbsp;
                 <span className="tooltip">The Hackathon is <span className="serifBold">Active</span>. You have this time to complete all aspects of your project submission. Be mindful of the stated deadline and carefully follow the instructions given on this page.</span>
             </span>&gt;
             <span className = "qBox">&nbsp;Review&nbsp;
@@ -40,11 +48,35 @@ const Dashboard = () => {
             </span>
             phase.
         </p>
-        <div className="projBox console">
-            <span className="inputWrap">
-                <input className="txtBox medBig serifBold" type="text" defaultValue="Project Title"/>
-                <div className="action">{iconEdit}{iconSave}</div>
-            </span>
+        <br/>
+        <div className="flexBox">
+            <div className="leftBox">
+                <div className="projBox cYellow padBottom">
+                    <p className="serifBold med">Hackathon is Active</p>
+                    <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-17T08:59:59Z' ></CountdownMini></span></p>
+                </div>
+                <div className="projBox console cBlue">
+                    <p className="serifBold med">Project Checklist</p>
+                    <p className="wrapCheckbox"><label className="labelCheckbox">
+                        <input type="checkbox" />
+                        {iconCheck} 
+                    </label>
+                    Hello Test</p>
+                    <p className="wrapCheckbox"><label className="labelCheckbox">
+                        <input type="checkbox" />
+                        {iconCheck} 
+                    </label>
+                    Hello Test</p>
+                </div>
+            </div>
+            <div className="rightBox">
+                <div className="projBox console">
+                    <span className="inputWrap">
+                        <input className="txtBox medBig serifBold" type="text" defaultValue="Project Title"/>
+                        <div className="action">{iconEdit}{iconSave}</div>
+                    </span>
+                </div>
+            </div>
         </div>
         
     </div>
