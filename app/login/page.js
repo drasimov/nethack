@@ -18,8 +18,8 @@ const Login = () => {
             <p className="center">You are logged in. <span className="button serifBold bWhite" onClick={() => signOut()}>Sign out</span></p>
             <br/>
             <p className = "serifBold">Your Account Information</p>
-            {/* <p>Name: {session.user.name}</p>
-            <p>Email: {session.user.email}</p> */}
+            <p>Name: {session.user.name}</p>
+            <p>Email: {session.user.email}</p>
             <p>Account type: </p>
             <p className = "center"><Link href="/dashboard"><span className="button serifBold bBlue">Open My Hackathon Dashboard</span></Link></p>
         </>
