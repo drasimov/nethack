@@ -5,10 +5,17 @@
 .wrap{
     background: rgba(10,10,10,.8);
     font-size: 3vw;
+    display: relative;
     /* font-weight: bold; */
 }
 
 .wrap{
     font-family: "CMU Serif", serif;
     color: #FFF;
+}
+
+.right{
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
 }

@@ -1,7 +1,9 @@
 // import { Geist, Geist_Mono } from "next/font/google";
+"use client"
 import "./globals.css";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { SessionProvider } from "next-auth/react";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -22,11 +24,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar/>
-        <div className = "bigWrap">
-          {children}
+        <div className = "biggestWrap">
+          <Navbar/>
+          <div className = "bigWrap">
+            <SessionProvider>{children}</SessionProvider>
+          </div>
+          <Footer/>
         </div>
-        <Footer/>
       </body>
     </html>
   );
