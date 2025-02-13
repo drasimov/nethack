@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { SessionProvider } from "next-auth/react";
+import { CompetitionProvider } from '@/context/CompetitionContext';
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -27,7 +28,7 @@ export default function RootLayout({ children }) {
         <div className = "biggestWrap">
           <Navbar/>
           <div className = "bigWrap">
-            <SessionProvider>{children}</SessionProvider>
+            <SessionProvider><CompetitionProvider>{children}</CompetitionProvider></SessionProvider>
           </div>
           <Footer/>
         </div>

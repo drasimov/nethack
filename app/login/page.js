@@ -1,13 +1,16 @@
 "use client"
 import React from 'react';
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useCompetition } from '@/context/CompetitionContext';
 import Link from "next/link";
 
 const Login = () => {
     const { data: session } = useSession();
+    const competitionState = useCompetition().competitionState;
 
   return (
     <div>
+        {console.log(competitionState)}
         <p><span className="cWhite serifBold big">User Login</span></p>
         <hr/>
         <p className="cBlue">This is the portal for <span className="serifBold">competitor, voter, and judge</span> account login.</p>
