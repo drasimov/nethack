@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCompetition } from '@/context/CompetitionContext';
 import CountdownMini from '@/components/CountdownMini';
@@ -33,29 +34,34 @@ const Dashboard = () => {
     )
 
   return (
-    <div>
-        {competitionState}
+    <>
+    {session ? (
+    <>
         <p><span className="cWhite serifBold big">Name's Dashboard</span></p>
         <hr/>
         <p className="cBlue">As a <span className="serifBold">competitor</span>, this is where you can view the progress of the competition and your project.</p>
-        <p className="cYellow">The 2025 Network Hackathon is currently in the
-            <span className = "qBox">&nbsp;Closed&nbsp;
+        <p className="cYellow">The 2025 Network Hackathon is currently in the&nbsp;
+            <span className = {`qBox ${competitionState == "closed" ? 'serifBold serifUnderline' : ''}`}>Closed
                 <span className="tooltip">The Hackathon is <span className="serifBold">Closed</span>. It is currently not accepting work, meaning you may not edit or submit files at this time.</span>
-            </span>&gt;
-            <span className = "qBox">&nbsp;Active&nbsp;
+            </span>&nbsp;&gt;&nbsp;
+            <span className = {`qBox ${competitionState == "active" ? 'serifBold serifUnderline' : ''}`}>Active
                 <span className="tooltip">The Hackathon is <span className="serifBold">Active</span>. You have this time to complete all aspects of your project submission. Be mindful of the stated deadline and carefully follow the instructions given on this page.</span>
-            </span>&gt;
-            <span className = "qBox">&nbsp;Review&nbsp;
+            </span>&nbsp;&gt;&nbsp;
+            <span className = {`qBox ${competitionState == "review" ? 'serifBold serifUnderline' : ''}`}>Review
                 <span className="tooltip">The Hackathon is <span className="serifBold">Under Review</span>. You are no longer able to edit your submission as it is being reviewed by judges and packaged for presentation.</span>
-            </span>
+            </span>&nbsp;
             phase.
         </p>
+
+        {/* CHANGE THIS TO active */}
+        {competitionState == "closed" &&
+        <>
         <br/>
         <div className="flexBox">
             <div className="leftBox">
                 <div className="projBox cYellow padBottom">
                     <p className="serifBold med">Hackathon is Active</p>
-                    <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-17T08:59:59Z' ></CountdownMini></span></p>
+                    <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-23T23:59:59Z' ></CountdownMini></span></p>
                 </div>
                 <div className="projBox console cBlue">
                     <p className="serifBold med">Project Checklist</p>
@@ -80,8 +86,15 @@ const Dashboard = () => {
                 </div>
             </div>
         </div>
-        
-    </div>
+        </>
+        }
+    </>
+    ):(
+        <>
+        <p>You need to <b><Link className="button bGray" href = "/login">Login</Link></b> to access this page.</p>
+        </>
+    )}
+    </>
   );
 };
 

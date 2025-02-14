@@ -101,6 +101,7 @@ hr{
 .cBlue{ color: var(--blue)}
 .cPurple{ color: var(--purple)}
 .bWhite{ background: #FFF}
+.bGray{ background: #808080}
 .bBlue{ background: var(--blue)}
 
 .bSmooth{ 
@@ -120,6 +121,7 @@ hr{
 .serif{ font-family: 'CMU Serif', serif}
 .serifBold{ font-family: 'CMU Serif Bold', serif}
 .serifItalic{ font-family: 'CMU Serif Italic', serif}
+.serifUnderline{ text-decoration: underline}
 
 .link{ text-decoration:underline}
 
@@ -210,7 +212,7 @@ hr{
   margin: auto;
   margin-top: 5px;
 }
-.loginBox .button{
+.button{
   padding: 2px;
   border: 2px solid #303030;
   border-radius: 5px;
