@@ -1,10 +1,12 @@
 "use client"
 import React from 'react';
 import { useSession } from "next-auth/react";
+import { useCompetition } from '@/context/CompetitionContext';
 import CountdownMini from '@/components/CountdownMini';
 
 const Dashboard = () => {
     const { data: session } = useSession();
+    const competitionState = useCompetition().competitionState;
 
     const iconEdit = (
         <span className="iconEdit">
@@ -14,7 +16,6 @@ const Dashboard = () => {
             </svg>
         </span>
     );
-
     const iconSave = (
         <span className="iconSave">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" transform="translate(0,-.6)" viewBox="0 0 16 16">
@@ -33,6 +34,7 @@ const Dashboard = () => {
 
   return (
     <div>
+        {competitionState}
         <p><span className="cWhite serifBold big">Name's Dashboard</span></p>
         <hr/>
         <p className="cBlue">As a <span className="serifBold">competitor</span>, this is where you can view the progress of the competition and your project.</p>

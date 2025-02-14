@@ -10,7 +10,6 @@ const Login = () => {
 
   return (
     <div>
-        {console.log(competitionState)}
         <p><span className="cWhite serifBold big">User Login</span></p>
         <hr/>
         <p className="cBlue">This is the portal for <span className="serifBold">competitor, voter, and judge</span> account login.</p>
