@@ -16,3 +16,17 @@ const pool=mysql.createPool({
 export default async function getConnection() {
     return await pool.getConnection();
 }
+
+export async function getUser(email) { // Fixed function name
+    try {
+        const [rows] = await pool.query(
+            "SELECT access, teamID FROM users WHERE email = ?", // Actual columns
+            [email]
+        );
+        return rows[0] || null;
+    } catch (error) {
+        console.error("Database error:", error);
+        return null;
+    }
+}
+

@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCompetition } from '@/context/CompetitionContext';
@@ -8,6 +9,27 @@ import CountdownMini from '@/components/CountdownMini';
 const Dashboard = () => {
     const { data: session } = useSession();
     const competitionState = useCompetition().competitionState;
+    const [entries, setEntries] = useState([]);
+
+    const fetchEntries = async () => {
+        try {
+            const response = await fetch("api/sql/pullProject?search=" + session.user.teamID);
+            if (response.ok) {
+                const data = await response.json();
+                setEntries(data);
+            }
+            else {
+                console.error("Failed to fetch entries");
+            }
+        }
+        catch (error) {
+            console.error("Error fetching entries: ", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchEntries();
+    }, []);
 
     const iconEdit = (
         <span className="iconEdit">
@@ -35,9 +57,10 @@ const Dashboard = () => {
 
   return (
     <>
+    {console.log(entries)}
     {session ? (
     <>
-        <p><span className="cWhite serifBold big">Name's Dashboard</span></p>
+        <p><span className="cWhite serifBold big">Dashboard for {session.user.name}</span></p>
         <hr/>
         <p className="cBlue">As a <span className="serifBold">competitor</span>, this is where you can view the progress of the competition and your project.</p>
         <p className="cYellow">The 2025 Network Hackathon is currently in the&nbsp;

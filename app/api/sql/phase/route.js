@@ -6,7 +6,6 @@ export async function GET(request) {
     try {
         connection = await getConnection();
         const [pullResults] = await connection.query("SELECT * FROM phases");
-        console.log(pullResults);
         const sortedResults = pullResults.sort((a, b) => new Date(a.activated) - new Date(b.activated));
 
         return new Response(JSON.stringify(sortedResults), {

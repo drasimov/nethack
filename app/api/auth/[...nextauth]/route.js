@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import AzureADProvider from "next-auth/providers/azure-ad";
+import { getUser } from "@/api/sql/database";
 
 const authOptions = {
     providers: [
@@ -22,6 +23,14 @@ const authOptions = {
                 token.accessToken = account.access_token; 
                 token.name = profile?.name;
                 token.email = profile?.email;
+                token.access = 0;
+                token.teamID = null;
+
+                const competition = await getUser(profile.email.toLowerCase());
+                if(competition){
+                    token.access = competition.access;
+                    token.teamID = competition.teamID;
+                }
             }
             return token;
         },
@@ -29,6 +38,9 @@ const authOptions = {
             session.accessToken = token.accessToken;
             session.user.name = token.name;
             session.user.email = token.email;
+            session.user.access = token.access;
+            session.user.teamID = token.teamID;
+
             return session;
         },
     },
