@@ -110,7 +110,7 @@ textarea{
 .cBlue{ color: var(--blue)}
 .cPurple{ color: var(--purple)}
 .bWhite{ background: #FFF}
-.bGray{ background: #808080}
+.bGray{ background: #000}
 .bBlue{ background: var(--blue)}
 
 .bSmooth{ 
