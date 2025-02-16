@@ -12,18 +12,20 @@ const Dashboard = () => {
     const [entries, setEntries] = useState([]);
 
     const fetchEntries = async () => {
-        try {
-            const response = await fetch("api/sql/pullProject?search=" + session.user.teamID);
-            if (response.ok) {
-                const data = await response.json();
-                setEntries(data);
+        if(session){
+            try {
+                const response = await fetch("/api/sql/pullProject?search=" + session.user.teamID);
+                if (response.ok) {
+                    const data = await response.json();
+                    setEntries(data[0]);
+                }
+                else {
+                    console.error("Failed to fetch entries");
+                }
             }
-            else {
-                console.error("Failed to fetch entries");
-            }
-        }
-        catch (error) {
-            console.error("Error fetching entries: ", error);
+            catch (error) {
+                console.error("Error fetching entries: ", error);
+            }    
         }
     };
 

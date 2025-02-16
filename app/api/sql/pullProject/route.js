@@ -2,7 +2,7 @@
 import getConnection from "@/api/sql/database";
 
 // allows two types of requests to 'hacks' table
-export async function GET(request, result) {
+export async function GET(request) {
     let connection;
     try {
         connection = await getConnection();

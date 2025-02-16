@@ -246,3 +246,13 @@ hr{
   font-weight: italic;
   font-style: normal;
 }
+
+@media only screen and (max-width: 880px){
+  hr{
+    width: 80%;
+    margin-top: 0px;
+    margin-left: 2px;
+    margin-bottom: 8px;
+    border: 1px solid #FFF;
+  }
+}
