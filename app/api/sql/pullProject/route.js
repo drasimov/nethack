@@ -39,7 +39,7 @@ export async function GET(request) {
     }
     finally{
         if(connection){
-            connection.release;
+            connection.release();
         }
     }
 }

@@ -68,6 +68,15 @@ hr{
   border-bottom: 2px solid var(--foreground);
   outline: none;
 }
+.txtArea{
+  border: 1px solid var(--foreground);
+  border-radius: 2px;
+  width: 100%;
+}
+
+textarea{
+  resize: vertical;
+}
 
 .wrapCheckbox{
   display: flex;
@@ -168,6 +177,15 @@ hr{
   width: 70%;
   display: inline-block;
 }
+.leftBoxInv{
+  width: 70%;
+  display: inline-block;
+  padding-right: 10px;
+}
+.rightBoxInv{
+  width: 30%;
+  display: inline-block;
+}
 .padBottom{
   margin-bottom: 10px;
 }
@@ -221,6 +239,10 @@ hr{
 .loginBox hr{
   margin-top: -2px;
   border: 1px solid #000;
+}
+.clientWrap{
+  position: relative;
+  padding-top: 5px;
 }
 
 @media (prefers-color-scheme: dark) {

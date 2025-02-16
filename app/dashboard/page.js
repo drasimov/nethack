@@ -10,6 +10,15 @@ const Dashboard = () => {
     const { data: session } = useSession();
     const competitionState = useCompetition().competitionState;
     const [entries, setEntries] = useState([]);
+    
+    const [edit, setEdit] = useState(false);
+
+    const [teamID, setTeamID] = useState(null);
+    const [title, setTitle] = useState(null);
+    const [description, setDescription] = useState(null);
+    const [github, setGithub] = useState(null);
+    const [prompt, setPrompt] = useState(null);
+    const [technologies, setTechnologies] = useState(null);
 
     const fetchEntries = async () => {
         if(session){
@@ -18,6 +27,11 @@ const Dashboard = () => {
                 if (response.ok) {
                     const data = await response.json();
                     setEntries(data[0]);
+                    setTitle(data[0]?.title)
+                    setDescription(data[0]?.description)            
+                    setGithub(data[0]?.Github)            
+                    setPrompt(data[0]?.Prompt)            
+                    setTechnologies(data[0]?.Technologies)            
                 }
                 else {
                     console.error("Failed to fetch entries");
@@ -29,9 +43,44 @@ const Dashboard = () => {
         }
     };
 
+    const changeEntries = async () => {
+
+        const data = {
+            teamID,
+            title,
+            description,
+            github,
+            prompt,
+            technologies,
+        };
+
+        try {
+            const response = await fetch('api/sql/editProject', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                setEdit(false)
+                fetchEntries();
+            } else {
+                console.error('Error: ' + result.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
     useEffect(() => {
         fetchEntries();
-    }, []);
+        if(session){
+            setTeamID(session.user.teamID)
+        }
+    }, [session]);
 
     const iconEdit = (
         <span className="iconEdit">
@@ -103,12 +152,41 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className="rightBox">
+            <form onSubmit={changeEntries}>
+            <button type="submit">Update Team</button>
                 <div className="projBox console">
                     <span className="inputWrap">
-                        <input className="txtBox medBig serifBold" type="text" defaultValue="Project Title"/>
+                        <input className="txtBox medBig serifBold" 
+                            type="text" 
+                            placeholder="Project Title"
+                            defaultValue={entries.title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
                         <div className="action">{iconEdit}{iconSave}</div>
                     </span>
+                    <div className="flexBox clientWrap">
+                        <div className="leftBoxInv">
+                            <span className="inputWrap">
+                                <textarea className="txtBox txtArea med serifItalic" 
+                                    placeholder="Project Description"
+                                    defaultValue={entries.description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                />
+                            </span>
+                        </div>
+                        <div className="rightBoxInv">
+                            <span className="inputWrap">
+                                List of technologies (optional)
+                                <textarea className="txtBox txtArea medSmall serifItalic" defaultValue="List of technologies (optional)"/>
+                            </span>
+                            <span className="inputWrap">
+                                Link to Github (optional)
+                                <textarea className="txtBox txtArea medSmall serifItalic" defaultValue="Link to Github (optional)"/>
+                            </span>
+                        </div>
+                    </div>
                 </div>
+            </form>
             </div>
         </div>
         </>

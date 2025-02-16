@@ -3,6 +3,7 @@ import AzureADProvider from "next-auth/providers/azure-ad";
 import { getUser } from "@/api/sql/database";
 
 const authOptions = {
+    secret: process.env.NEXTAUTH_SECRET,  
     providers: [
         AzureADProvider({
             clientId: process.env.AZURE_AD_CLIENT_ID,
