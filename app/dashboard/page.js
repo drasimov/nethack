@@ -127,8 +127,16 @@ const Dashboard = () => {
             phase.
         </p>
 
-        {/* CHANGE THIS TO active */}
         {competitionState == "closed" &&
+        <>
+        <br/>
+        <div className="projBox cYellow padBottom">
+            <p className="serifBold med">Hackathon is Closed</p>
+            <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-17T08:59:59Z' ></CountdownMini></span></p>
+        </div>
+        </>}
+        {/* CHANGE THIS TO active */}
+        {competitionState == "active" &&
         <>
         <br/>
         <div className="flexBox">
