@@ -136,7 +136,7 @@ const Dashboard = () => {
         </>}
         {/* CHANGE THIS TO active */}
         {competitionState == "active" &&
-         session.user.level >=1 ? (
+         session.user.access >=1 ? (
             <>
             <br/>
             <div className="flexBox">
