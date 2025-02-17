@@ -135,8 +135,7 @@ const Dashboard = () => {
         </div>
         </>}
         {/* CHANGE THIS TO active */}
-        {competitionState == "active" &&
-         session.user.access >=1 ? (
+        {competitionState == "active" && session.user.access >=1 ? (
             <>
             <br/>
             <div className="flexBox">
