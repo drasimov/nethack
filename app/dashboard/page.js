@@ -137,112 +137,118 @@ const Dashboard = () => {
         </>}
         {/* CHANGE THIS TO active */}
         {competitionState == "active" &&
-        <>
-        <br/>
-        <div className="flexBox">
-            <div className="leftBox">
-                <div className="projBox cYellow padBottom">
-                    <p className="serifBold med">Hackathon is Active</p>
-                    <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-23T23:59:59Z' ></CountdownMini></span></p>
-                </div>
-                <div className="projBox console cBlue">
-                    <p className="serifBold med">Project Checklist</p>
-                    <p>Your team: <span className="serifBold">{entries.members}</span></p><br/>
-                    <p className="wrapCheckbox"><label className="labelCheckbox">
-                        <input type="checkbox" />
-                        {iconCheck} 
-                    </label>
-                    Checklist Coming Soon</p>
-
-                    {/* <p className="wrapCheckbox"><label className="labelCheckbox">
-                        <input type="checkbox" />
-                        {iconCheck} 
-                    </label>
-                    Hello Test</p> */}
-                </div>
-            </div>
-            <div className="rightBox">
-            <form onSubmit={changeEntries}>
-                <div className="projBox console">
-                    <button type="submit">{iconSave}</button>   
-                    <span className="inputWrap">
-                        <input className="txtBox medBig serifBold" 
-                            type="text" 
-                            placeholder="Project Title"
-                            defaultValue={entries.title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                    </span>
-                    <div className="flexBox clientWrap">
-                        <div className="leftBoxInv">
-                            <span className="inputWrap">
-                                Project Description
-                                <textarea className="txtBox txtArea med serifItalic" 
-                                    placeholder="Describe your project in 3-8 sentences."
-                                    defaultValue={entries.description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                />
-                            </span>
-                        </div>
-                        
-                        <div className="rightBoxInv">
-                            Prompt Select
-                            <div className="txtArea">
-                                <p className="wrapRadio small"><label className="labelRadio">
-                                    <input 
-                                        type="radio" 
-                                        value="Wiring and computing" 
-                                        checked={prompt === 'Wiring and computing'} 
-                                        onChange={(e) => setPrompt(e.target.value)} 
-                                    />  
-                                    <span className="iconRadio"></span>
-                                </label>
-                                Wires and computing</p>
-                                <p className="wrapRadio small"><label className="labelRadio">
-                                    <input 
-                                        type="radio" 
-                                        value="Culture and humanity" 
-                                        checked={prompt === 'Culture and humanity'} 
-                                        onChange={(e) => setPrompt(e.target.value)} 
-                                    />
-                                    <span className="iconRadio"></span>
-                                </label>
-                                Culture and humanity</p>
-                                <p className="wrapRadio small"><label className="labelRadio">
-                                    <input 
-                                        type="radio" 
-                                        value="Theory and reality" 
-                                        checked={prompt === 'Theory and reality'} 
-                                        onChange={(e) => setPrompt(e.target.value)} 
-                                    />
-                                    <span className="iconRadio"></span>
-                                </label>
-                                Theory and reality</p>
-                            </div><br/>
-                            <span className="inputWrap">
-                                List of technologies (optional)
-                                <textarea className="txtBox txtArea medSmall serifItalic" 
-                                    placeholder="e.g. Javascript, Python, numpy, Scratch"
-                                    defaultValue={entries.technologies}
-                                    onChange={(e) => setTechnologies(e.target.value)}
-                                />
-                            </span>
-                            <span className="inputWrap">
-                                Link to Github (optional)
-                                <textarea className="txtBox txtArea medSmall serifItalic" 
-                                    placeholder="https://..."
-                                    defaultValue={entries.github}
-                                    onChange={(e) => setGithub(e.target.value)}
-                                />
-                            </span>
-                        </div>
+         session.user.level >=1 ? (
+            <>
+            <br/>
+            <div className="flexBox">
+                <div className="leftBox">
+                    <div className="projBox cYellow padBottom">
+                        <p className="serifBold med">Hackathon is Active</p>
+                        <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-23T23:59:59Z' ></CountdownMini></span></p>
+                    </div>
+                    <div className="projBox console cBlue">
+                        <p className="serifBold med">Project Checklist</p>
+                        <p>Your team: <span className="serifBold">{entries.members}</span></p><br/>
+                        <p className="wrapCheckbox"><label className="labelCheckbox">
+                            <input type="checkbox" />
+                            {iconCheck} 
+                        </label>
+                        Checklist Coming Soon</p>
+    
+                        {/* <p className="wrapCheckbox"><label className="labelCheckbox">
+                            <input type="checkbox" />
+                            {iconCheck} 
+                        </label>
+                        Hello Test</p> */}
                     </div>
                 </div>
-            </form>
+                <div className="rightBox">
+                <form onSubmit={changeEntries}>
+                    <div className="projBox console">
+                        <button type="submit">{iconSave}</button>   
+                        <span className="inputWrap">
+                            <input className="txtBox medBig serifBold" 
+                                type="text" 
+                                placeholder="Project Title"
+                                defaultValue={entries.title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </span>
+                        <div className="flexBox clientWrap">
+                            <div className="leftBoxInv">
+                                <span className="inputWrap">
+                                    Project Description
+                                    <textarea className="txtBox txtArea med serifItalic" 
+                                        placeholder="Describe your project in 3-8 sentences."
+                                        defaultValue={entries.description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                    />
+                                </span>
+                            </div>
+                            
+                            <div className="rightBoxInv">
+                                Prompt Select
+                                <div className="txtArea">
+                                    <p className="wrapRadio small"><label className="labelRadio">
+                                        <input 
+                                            type="radio" 
+                                            value="Wiring and computing" 
+                                            checked={prompt === 'Wiring and computing'} 
+                                            onChange={(e) => setPrompt(e.target.value)} 
+                                        />  
+                                        <span className="iconRadio"></span>
+                                    </label>
+                                    Wires and computing</p>
+                                    <p className="wrapRadio small"><label className="labelRadio">
+                                        <input 
+                                            type="radio" 
+                                            value="Culture and humanity" 
+                                            checked={prompt === 'Culture and humanity'} 
+                                            onChange={(e) => setPrompt(e.target.value)} 
+                                        />
+                                        <span className="iconRadio"></span>
+                                    </label>
+                                    Culture and humanity</p>
+                                    <p className="wrapRadio small"><label className="labelRadio">
+                                        <input 
+                                            type="radio" 
+                                            value="Theory and reality" 
+                                            checked={prompt === 'Theory and reality'} 
+                                            onChange={(e) => setPrompt(e.target.value)} 
+                                        />
+                                        <span className="iconRadio"></span>
+                                    </label>
+                                    Theory and reality</p>
+                                </div><br/>
+                                <span className="inputWrap">
+                                    List of technologies (optional)
+                                    <textarea className="txtBox txtArea medSmall serifItalic" 
+                                        placeholder="e.g. Javascript, Python, numpy, Scratch"
+                                        defaultValue={entries.technologies}
+                                        onChange={(e) => setTechnologies(e.target.value)}
+                                    />
+                                </span>
+                                <span className="inputWrap">
+                                    Link to Github (optional)
+                                    <textarea className="txtBox txtArea medSmall serifItalic" 
+                                        placeholder="https://..."
+                                        defaultValue={entries.github}
+                                        onChange={(e) => setGithub(e.target.value)}
+                                    />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div>
             </div>
-        </div>
-        </>
-        }
+            </>
+    
+        ):(
+            <>
+            <p>Your account does not grant you access to this page.</p>
+            </>
+        )}
     </>
     ):(
         <>
