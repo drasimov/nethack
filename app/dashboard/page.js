@@ -13,12 +13,12 @@ const Dashboard = () => {
     
     const [edit, setEdit] = useState(false);
 
-    const [teamID, setTeamID] = useState(null);
-    const [title, setTitle] = useState(null);
-    const [description, setDescription] = useState(null);
-    const [github, setGithub] = useState(null);
-    const [prompt, setPrompt] = useState(null);
-    const [technologies, setTechnologies] = useState(null);
+    const [teamID, setTeamID] = useState("");
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [github, setGithub] = useState("");
+    const [prompt, setPrompt] = useState("");
+    const [technologies, setTechnologies] = useState("");
 
     const fetchEntries = async () => {
         if(session){
@@ -92,7 +92,7 @@ const Dashboard = () => {
     );
     const iconSave = (
         <span className="iconSave">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" transform="translate(0,-.6)" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" transform="translate(0,-.6)" viewBox="0 0 16 16">
                 <path d="M11 2H9v3h2z"/>
                 <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
             </svg>        
@@ -136,7 +136,7 @@ const Dashboard = () => {
         </div>
         </>}
         {/* CHANGE THIS TO active */}
-        {competitionState == "closed" &&
+        {competitionState == "active" &&
         <>
         <br/>
         <div className="flexBox">
@@ -151,18 +151,18 @@ const Dashboard = () => {
                         <input type="checkbox" />
                         {iconCheck} 
                     </label>
-                    Hello Test</p>
-                    <p className="wrapCheckbox"><label className="labelCheckbox">
+                    Coming Soon</p>
+                    {/* <p className="wrapCheckbox"><label className="labelCheckbox">
                         <input type="checkbox" />
                         {iconCheck} 
                     </label>
-                    Hello Test</p>
+                    Hello Test</p> */}
                 </div>
             </div>
             <div className="rightBox">
             <form onSubmit={changeEntries}>
-            <button type="submit">Update Team</button>
                 <div className="projBox console">
+                    <button type="submit">{iconSave}</button>   
                     <span className="inputWrap">
                         <input className="txtBox medBig serifBold" 
                             type="text" 
@@ -170,14 +170,13 @@ const Dashboard = () => {
                             defaultValue={entries.title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
-                        <div className="action">{iconEdit}{iconSave}</div>
                     </span>
                     <div className="flexBox clientWrap">
                         <div className="leftBoxInv">
                             <span className="inputWrap">
                                 Project Description
                                 <textarea className="txtBox txtArea med serifItalic" 
-                                    placeholder="Project Description"
+                                    placeholder="Describe your project in 3-8 sentences."
                                     defaultValue={entries.description}
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
@@ -185,38 +184,39 @@ const Dashboard = () => {
                         </div>
                         
                         <div className="rightBoxInv">
-                            <div className="wrapRadio">
-                                <label className="labelRadio">
-                                    Prompt<br/>
+                            Prompt Select
+                            <div className="txtArea">
+                                <p className="wrapRadio small"><label className="labelRadio">
                                     <input 
                                         type="radio" 
-                                        name="promptSelect" 
-                                        value="Wires and computing" 
-                                        checked={prompt === 'Wires and computing'} 
+                                        value="Wiring and computing" 
+                                        checked={prompt === 'Wiring and computing'} 
                                         onChange={(e) => setPrompt(e.target.value)} 
-                                    />
+                                    />  
                                     <span className="iconRadio"></span>
-                                    Wires and computing<br/>
+                                </label>
+                                Wires and computing</p>
+                                <p className="wrapRadio small"><label className="labelRadio">
                                     <input 
                                         type="radio" 
-                                        name="promptSelect" 
                                         value="Culture and humanity" 
                                         checked={prompt === 'Culture and humanity'} 
                                         onChange={(e) => setPrompt(e.target.value)} 
                                     />
                                     <span className="iconRadio"></span>
-                                    Culture and humanity<br/>
+                                </label>
+                                Culture and humanity</p>
+                                <p className="wrapRadio small"><label className="labelRadio">
                                     <input 
                                         type="radio" 
-                                        name="promptSelect" 
                                         value="Theory and reality" 
                                         checked={prompt === 'Theory and reality'} 
                                         onChange={(e) => setPrompt(e.target.value)} 
                                     />
                                     <span className="iconRadio"></span>
-                                    Theory and reality<br/>
                                 </label>
-                            </div>
+                                Theory and reality</p>
+                            </div><br/>
                             <span className="inputWrap">
                                 List of technologies (optional)
                                 <textarea className="txtBox txtArea medSmall serifItalic" 
