@@ -147,11 +147,13 @@ const Dashboard = () => {
                 </div>
                 <div className="projBox console cBlue">
                     <p className="serifBold med">Project Checklist</p>
+                    <p>Your team: <span className="serifBold">{entries.members}</span></p><br/>
                     <p className="wrapCheckbox"><label className="labelCheckbox">
                         <input type="checkbox" />
                         {iconCheck} 
                     </label>
-                    Coming Soon</p>
+                    Checklist Coming Soon</p>
+
                     {/* <p className="wrapCheckbox"><label className="labelCheckbox">
                         <input type="checkbox" />
                         {iconCheck} 
