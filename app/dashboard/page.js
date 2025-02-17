@@ -29,9 +29,9 @@ const Dashboard = () => {
                     setEntries(data[0]);
                     setTitle(data[0]?.title)
                     setDescription(data[0]?.description)            
-                    setGithub(data[0]?.Github)            
-                    setPrompt(data[0]?.Prompt)            
-                    setTechnologies(data[0]?.Technologies)            
+                    setGithub(data[0]?.github)
+                    setPrompt(data[0]?.prompt)
+                    setTechnologies(data[0]?.technologies)
                 }
                 else {
                     console.error("Failed to fetch entries");
@@ -136,7 +136,7 @@ const Dashboard = () => {
         </div>
         </>}
         {/* CHANGE THIS TO active */}
-        {competitionState == "active" &&
+        {competitionState == "closed" &&
         <>
         <br/>
         <div className="flexBox">
@@ -175,6 +175,7 @@ const Dashboard = () => {
                     <div className="flexBox clientWrap">
                         <div className="leftBoxInv">
                             <span className="inputWrap">
+                                Project Description
                                 <textarea className="txtBox txtArea med serifItalic" 
                                     placeholder="Project Description"
                                     defaultValue={entries.description}
@@ -182,14 +183,55 @@ const Dashboard = () => {
                                 />
                             </span>
                         </div>
+                        
                         <div className="rightBoxInv">
+                            <div className="wrapRadio">
+                                <label className="labelRadio">
+                                    Prompt<br/>
+                                    <input 
+                                        type="radio" 
+                                        name="promptSelect" 
+                                        value="Wires and computing" 
+                                        checked={prompt === 'Wires and computing'} 
+                                        onChange={(e) => setPrompt(e.target.value)} 
+                                    />
+                                    <span className="iconRadio"></span>
+                                    Wires and computing<br/>
+                                    <input 
+                                        type="radio" 
+                                        name="promptSelect" 
+                                        value="Culture and humanity" 
+                                        checked={prompt === 'Culture and humanity'} 
+                                        onChange={(e) => setPrompt(e.target.value)} 
+                                    />
+                                    <span className="iconRadio"></span>
+                                    Culture and humanity<br/>
+                                    <input 
+                                        type="radio" 
+                                        name="promptSelect" 
+                                        value="Theory and reality" 
+                                        checked={prompt === 'Theory and reality'} 
+                                        onChange={(e) => setPrompt(e.target.value)} 
+                                    />
+                                    <span className="iconRadio"></span>
+                                    Theory and reality<br/>
+                                </label>
+                            </div>
                             <span className="inputWrap">
                                 List of technologies (optional)
-                                <textarea className="txtBox txtArea medSmall serifItalic" defaultValue="List of technologies (optional)"/>
+                                <textarea className="txtBox txtArea medSmall serifItalic" 
+                                    placeholder="e.g. Javascript, Python, numpy, Scratch"
+                                    defaultValue={entries.technologies}
+                                    onChange={(e) => setTechnologies(e.target.value)}
+                                />
                             </span>
                             <span className="inputWrap">
                                 Link to Github (optional)
-                                <textarea className="txtBox txtArea medSmall serifItalic" defaultValue="Link to Github (optional)"/>
+                                <textarea className="txtBox txtArea medSmall serifItalic" 
+                                    placeholder="https://..."
+                                    defaultValue={entries.github}
+                                    onChange={(e) => setGithub(e.target.value)}
+                                />
                             </span>
                         </div>
                     </div>
