@@ -11,7 +11,7 @@ export const CompetitionProvider = ({ children }) => {
             const response = await fetch("/api/sql/phase");
             if (response.ok) {
                 const data = await response.json();
-                setCompetitionState(data[0].phase);
+                setCompetitionState(data.phase);
             }
             else {
                 console.error("Failed to fetch entries");
