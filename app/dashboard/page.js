@@ -108,7 +108,6 @@ const Dashboard = () => {
 
   return (
     <>
-    {console.log(entries)}
     {session ? (
     <>
         <p><span className="cWhite serifBold big">Dashboard for {session.user.name}</span></p>
