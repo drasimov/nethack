@@ -120,7 +120,7 @@ const Dashboard = () => {
             <span className = {`qBox ${competitionState == "active" ? 'serifBold serifUnderline' : ''}`}>Active
                 <span className="tooltip">The Hackathon is <span className="serifBold">Active</span>. You have this time to complete all aspects of your project submission. Be mindful of the stated deadline and carefully follow the instructions given on this page.</span>
             </span>&nbsp;&gt;&nbsp;
-            <span className = {`qBox ${competitionState == "review" ? 'serifBold serifUnderline' : ''}`}>Review
+            <span className = {`qBox ${competitionState == "judging" ? 'serifBold serifUnderline' : ''}`}>Review
                 <span className="tooltip">The Hackathon is <span className="serifBold">Under Review</span>. You are no longer able to edit your submission as it is being reviewed by judges and packaged for presentation.</span>
             </span>&nbsp;
             phase.
@@ -135,7 +135,7 @@ const Dashboard = () => {
         </div>
         </>}
         {/* CHANGE THIS TO active */}
-        {competitionState == "active" && session.user.access >=1 ? (
+        {competitionState == "active" && session.user.access >=1 &&
             <>
             <br/>
             <div className="flexBox">
@@ -242,11 +242,110 @@ const Dashboard = () => {
             </div>
             </>
     
-        ):(
+        }
+        {session.user.access <1 &&
             <>
             <p>Your account does not grant you access to this page.</p>
             </>
-        )}
+        }
+        {competitionState == "judging" && session.user.access >=1 &&
+            <>
+            <br/>
+            <div className="flexBox">
+                <div className="leftBox">
+                    <div className="projBox cYellow padBottom">
+                        <p className="serifBold med">Hackathon is Under Review</p>
+                        <p>Edits can no longer be made.</p>
+                    </div>
+                    <div className="projBox console cBlue">
+                        <p className="serifBold med">Project Checklist</p>
+                        <p>Your team: <span className="serifBold">{entries.members}</span></p><br/>
+                        <p className="wrapCheckbox"><label className="labelCheckbox">
+                            <input type="checkbox" />
+                            {iconCheck} 
+                        </label>
+                        Checklist Coming Soon</p>
+                    </div>
+                </div>
+                <div className="rightBox">
+                <form>
+                    <div className="projBox console">
+                        <span className="inputWrap">
+                            <input className="txtBox medBig serifBold" 
+                                type="text" 
+                                value={entries.title}
+                                readOnly
+                            />
+                        </span>
+                        <div className="flexBox clientWrap">
+                            <div className="leftBoxInv">
+                                <span className="inputWrap">
+                                    Project Description
+                                    <textarea className="txtBox txtArea med serifItalic" 
+                                        value={entries.description}
+                                        readOnly
+                                    />
+                                </span>
+                            </div>
+                            
+                            <div className="rightBoxInv">
+                                Prompt Select
+                                <div className="txtArea">
+                                    <p className="wrapRadio small"><label className="labelRadio">
+                                        <input 
+                                            type="radio" 
+                                            value="Wiring and computing" 
+                                            checked={prompt === 'Wiring and computing'} 
+                                            readOnly
+                                        />  
+                                        <span className="iconRadio"></span>
+                                    </label>
+                                    Wires and computing</p>
+                                    <p className="wrapRadio small"><label className="labelRadio">
+                                        <input 
+                                            type="radio" 
+                                            value="Culture and humanity" 
+                                            checked={prompt === 'Culture and humanity'} 
+                                            readOnly
+                                        />
+                                        <span className="iconRadio"></span>
+                                    </label>
+                                    Culture and humanity</p>
+                                    <p className="wrapRadio small"><label className="labelRadio">
+                                        <input 
+                                            type="radio" 
+                                            value="Theory and reality" 
+                                            checked={prompt === 'Theory and reality'} 
+                                            readOnly
+                                        />
+                                        <span className="iconRadio"></span>
+                                    </label>
+                                    Theory and reality</p>
+                                </div><br/>
+                                <span className="inputWrap">
+                                    List of technologies (optional)
+                                    <textarea className="txtBox txtArea medSmall serifItalic" 
+                                        value={entries.technologies}
+                                        readOnly
+                                    />
+                                </span>
+                                <span className="inputWrap">
+                                    Link to Github (optional)
+                                    <textarea className="txtBox txtArea medSmall serifItalic" 
+                                        value={entries.github}
+                                        readOnly
+                                    />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </>
+        
+        }
+
     </>
     ):(
         <>
