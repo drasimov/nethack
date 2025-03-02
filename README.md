@@ -1,1 +1,1 @@
-# nethack
+# BIBS·C Network Hackathon Portal
