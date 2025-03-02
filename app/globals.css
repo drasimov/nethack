@@ -53,6 +53,11 @@ a {
 .sub a{
   text-decoration: underline;
 }
+.sub{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 p {
   font-size: 1.25vw;
 }
