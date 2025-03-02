@@ -58,7 +58,6 @@ const Dashboard = () => {
     };
 
     const changeEntries = async () => {
-
         const data = {
             teamID,
             title,
@@ -220,7 +219,7 @@ const Dashboard = () => {
                             <div className="rightBoxInv">
                                 Prompt Select
                                 <div className="txtArea">
-                                    <p className="wrapRadio small"><label className="labelRadio">
+                                    <p className="wrapRadio"><label className="labelRadio">
                                         <input 
                                             type="radio" 
                                             value="Wiring and computing" 
@@ -230,7 +229,7 @@ const Dashboard = () => {
                                         <span className="iconRadio"></span>
                                     </label>
                                     Wires and computing</p>
-                                    <p className="wrapRadio small"><label className="labelRadio">
+                                    <p className="wrapRadio"><label className="labelRadio">
                                         <input 
                                             type="radio" 
                                             value="Culture and humanity" 
@@ -240,7 +239,7 @@ const Dashboard = () => {
                                         <span className="iconRadio"></span>
                                     </label>
                                     Culture and humanity</p>
-                                    <p className="wrapRadio small"><label className="labelRadio">
+                                    <p className="wrapRadio"><label className="labelRadio">
                                         <input 
                                             type="radio" 
                                             value="Theory and reality" 
@@ -318,7 +317,7 @@ const Dashboard = () => {
                             <div className="rightBoxInv">
                                 Prompt Select
                                 <div className="txtArea">
-                                    <p className="wrapRadio small"><label className="labelRadio">
+                                    <p className="wrapRadio"><label className="labelRadio">
                                         <input 
                                             type="radio" 
                                             value="Wiring and computing" 
@@ -328,7 +327,7 @@ const Dashboard = () => {
                                         <span className="iconRadio"></span>
                                     </label>
                                     Wires and computing</p>
-                                    <p className="wrapRadio small"><label className="labelRadio">
+                                    <p className="wrapRadio"><label className="labelRadio">
                                         <input 
                                             type="radio" 
                                             value="Culture and humanity" 
@@ -338,7 +337,7 @@ const Dashboard = () => {
                                         <span className="iconRadio"></span>
                                     </label>
                                     Culture and humanity</p>
-                                    <p className="wrapRadio small"><label className="labelRadio">
+                                    <p className="wrapRadio"><label className="labelRadio">
                                         <input 
                                             type="radio" 
                                             value="Theory and reality" 
