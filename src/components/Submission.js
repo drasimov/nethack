@@ -22,7 +22,7 @@
                         <p className="cWhite ">Developed by <span className="serifBold cBlue">{submission.members}</span></p>
                         <p className="cWhite">Built using <span className="serifBold cGreen">{submission.technologies == null ? <span className="cRed">No Technologies Listed</span> : submission.technologies}</span></p>
 
-                        <p className="cWhite">{submission.description}</p>
+                        <p className="cWhite"><span className="cYellow serifBold">{submission.prompt} </span>| {submission.description}</p>
                         <br/>
                         <span className="console">
                             <p className="cWhite sub"><span className="cPurple serifBold">Code&nbsp;</span> {submission.sub_code == "Github" ? <a href={submission.github} target="_blank">{submission.github}</a> : submission.sub_code == "NOT SUBMITTED" ? <span className="cRed">{submission.sub_code}</span> : <a href={submission.sub_code} target="_blank">{submission.sub_code}</a> }</p>
