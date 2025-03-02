@@ -237,6 +237,11 @@ textarea{
   right: 10px;
   border: 0;
 }
+.judgeTools .button{
+  background: #FFF;
+  color: #000;
+  cursor: pointer;
+}
 .flexBox{
   display: flex;
   align-items: top;

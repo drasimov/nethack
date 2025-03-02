@@ -7,4 +7,10 @@
     border-radius: 2px;
     padding: 5px 10px;
     padding-right: 10%;
+    position: relative;
+}
+.toolbox{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
