@@ -1,3 +1,10 @@
+.wrap{
+    padding-bottom: 0px;
+    padding-top:10px;
+}
 .outline{
-    border: 1px solid #000;
+    background: #000;
+    border-radius: 2px;
+    padding: 5px 10px;
+    padding-right: 10%;
 }

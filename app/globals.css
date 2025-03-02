@@ -131,8 +131,11 @@ textarea{
 }
 
 /* custom classes */
+.cGreen{ color: var(--foreground)}
 .cWhite{ color: #FFF}
 .cBlack{ color: #000}
+.cGray{color: #CACACA}
+.cRed{ color: #FF0000}
 .cYellow{ color: var(--yellow)}
 .cBlue{ color: var(--blue)}
 .cPurple{ color: var(--purple)}
@@ -149,6 +152,8 @@ textarea{
 
 .center{text-align:center}
 
+.small{font-size: 0.5vw}
+.smallMed{font-size: 1vw}
 .med{font-size: 1.5vw}
 .medBig{font-size: 2vw}
 .big{font-size: 2.5vw}
@@ -276,6 +281,10 @@ textarea{
 .loginBox hr{
   margin-top: -2px;
   border: 1px solid #000;
+}
+.displayBox hr{
+  margin-top: -2px;
+  width: 100%;
 }
 .clientWrap{
   position: relative;

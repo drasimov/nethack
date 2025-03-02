@@ -385,7 +385,7 @@ const Dashboard = () => {
             <div>
                 {console.log(entries)}
                 {entries.map(entry => (
-                    <Submission submission = {entry} user = {session.user.email}></Submission>
+                    <Submission key = {entry.teamID} submission = {entry} user = {session.user.email}></Submission>
                 ))}
 
             </div>
