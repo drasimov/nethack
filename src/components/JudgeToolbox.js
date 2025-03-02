@@ -30,8 +30,6 @@ const JudgeToolbox = ({submission, onUpdate}) => {
             const result = await response.json();
             if (response.ok) {
                 onUpdate();
-                console.log(data);
-                console.log(JSON.stringify(result));
             } else {
                 console.error('Error: ' + result.message);
             }

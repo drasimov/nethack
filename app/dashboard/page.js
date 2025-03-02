@@ -395,7 +395,6 @@ const Dashboard = () => {
                 <li>Additional judging features should be available for future rounds (e.g. Add Comment). For now we suggest you keep organized in external documents :(</li>
             </ul>
             <div>
-                {console.log(entries)}
                 {entries.map(entry => (
                     <Submission key = {entry.teamID} submission ={entry} user={session.user} onUpdate={refreshData}></Submission>
                 ))}

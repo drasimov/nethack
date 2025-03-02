@@ -33,7 +33,6 @@ const Test = () => {
     <>
         {session &&
             <div>
-                {console.log(entries)}
                 <Submission submission = {entries[0]} user = {session.user.email}></Submission>
             </div>
         }

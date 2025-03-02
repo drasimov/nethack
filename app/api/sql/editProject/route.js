@@ -4,7 +4,6 @@ import getConnection from "@/api/sql/database";
 export async function POST(request) {
     const connection = await getConnection();
     const body = await request.json();
-    console.log("BODY:"+ body);
     
     const { teamID, title, description, github, prompt, technologies } = body;
 
