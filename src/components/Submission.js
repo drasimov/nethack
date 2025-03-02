@@ -1,6 +1,7 @@
     "use client"
     import styles from './Submission.module.css'; 
     import { useEffect, useState } from "react";
+    import Link from "next/link";
     import JudgeToolbox from '@/components/JudgeToolbox'; 
 
     const Submission = ({submission, user, onUpdate}) => {
@@ -23,8 +24,10 @@
 
                         <p className="cWhite">{submission.description}</p>
                         <br/>
-                        <p className="cWhite"><span className="cPurple serifBold">Code:</span> {submission.sub_code == "Github" ? submission.github : submission.sub_code == "NOT SUBMITTED" ? <span className="cRed">{submission.sub_code}</span> : submission.sub_code }</p>
-                        <p className="cWhite"><span className="cPurple serifBold">Video:</span> {submission.sub_video == "NOT SUBMITTED" ? <span className="cRed">{submission.sub_video}</span> : submission.sub_video}</p>
+                        <span className="console">
+                            <p className="cWhite sub"><span className="cPurple serifBold">Code&nbsp;</span> {submission.sub_code == "Github" ? <a href={submission.github} target="_blank">{submission.github}</a> : submission.sub_code == "NOT SUBMITTED" ? <span className="cRed">{submission.sub_code}</span> : <a href={submission.sub_code} target="_blank">{submission.sub_code}</a> }</p>
+                            <p className="cWhite sub"><span className="cPurple serifBold">Video</span> {submission.sub_video == "NOT SUBMITTED" ? <span className="cRed">{submission.sub_video}</span> : <a href={submission.sub_video} target="_blank">{submission.sub_video}</a>}</p>
+                        </span>
                     </div>
                 }
             </div>        

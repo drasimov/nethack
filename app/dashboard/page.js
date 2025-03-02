@@ -380,11 +380,19 @@ const Dashboard = () => {
         <>
             <p><span className="cWhite serifBold big">Dashboard for {session.user.name}</span></p>
             <hr/>
-            <p className="cBlue">As a <span className="serifBold">Judge</span>, this is where you can access the competition.</p><br/>
-            <p>The Hackathon submissions for 2025R1 can be found below. Some notes:</p>
+            <p className="cBlue">As a <span className="serifBold">Judge</span>, this is where you can survey and manage the competition submission.</p><br/>
+            <p>The Hackathon submissions for 2025R1 can be found below. Some notes on judging:</p>
             <ul>
-                <li>Totally empty submissions are from students who did not confirm their withdrawal from the competition.</li>
-                <li>Submissions with no title are from students who did not submit a title. It is recommended you give the submission a title. </li>
+                <li>Code, Video, and Project Information (title, description) should be mandatory.</li>
+                <li>Github and Technologies list was explicitly stated to be optional. </li>
+                <li>Submissions are uniquely identified by teamID.</li>
+            </ul><br/>
+            <p>Some additional notes:</p>
+            <ul>
+                <li>Since these submissions will eventually be displayed on this site, it is better for submissions to have proper titles and technologies lists</li>
+                <li>A very basic tool is given on the upper-right corner for you to edit these as needed. This will directly change the entries in our Hackathon database</li>
+                <li>Links are included for your convenience. However, some may be broken/locked behind login; you may need to go back to the Teams assignment page to see the submission</li>
+                <li>Additional judging features should be available for future rounds (e.g. Add Comment). For now we suggest you keep organized in external documents :(</li>
             </ul>
             <div>
                 {console.log(entries)}
