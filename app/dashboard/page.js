@@ -89,6 +89,11 @@ const Dashboard = () => {
         }
     };
 
+    // this is called by an onUpdate that goes through Submission > JudgeToolbox
+    const refreshData = () => {
+        fetchEntries(); 
+    };
+
     useEffect(() => {
         fetchEntries();
         if(session){
@@ -385,7 +390,7 @@ const Dashboard = () => {
             <div>
                 {console.log(entries)}
                 {entries.map(entry => (
-                    <Submission key = {entry.teamID} submission = {entry} user = {session.user}></Submission>
+                    <Submission key = {entry.teamID} submission ={entry} user={session.user} onUpdate={refreshData}></Submission>
                 ))}
 
             </div>

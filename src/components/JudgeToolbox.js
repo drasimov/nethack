@@ -3,19 +3,19 @@ import styles from './JudgeToolbox.module.css';
 import React from 'react';
 import { useEffect, useState } from "react";
 
-const JudgeToolbox = ({submission}) => {
+const JudgeToolbox = ({submission, onUpdate}) => {
 
     const [title, setTitle] = useState(submission.title);
     const [technologies, setTechnologies] = useState(submission.technologies);
     
-    const changeEntries = async () => {
+    const changeEntries = async (newTitle, newTech) => {
         const data = {
             teamID: submission.teamID,
-            title,
+            title: newTitle,
             description: submission.description,
             github: submission.github,
             prompt: submission.prompt,
-            technologies,
+            technologies: newTech,
         };
 
         try {
@@ -29,7 +29,9 @@ const JudgeToolbox = ({submission}) => {
 
             const result = await response.json();
             if (response.ok) {
-                // fetchEntries();
+                onUpdate();
+                console.log(data);
+                console.log(JSON.stringify(result));
             } else {
                 console.error('Error: ' + result.message);
             }
@@ -42,13 +44,17 @@ const JudgeToolbox = ({submission}) => {
         <div className={`${styles.wrap} smallMed judgeTools serifBold`}>
             <span className="small cRed">Judge Tools<br/></span>
             <span className="button" onClick={() => {
-        const newTitle = prompt("Enter a new title:");
-        if (newTitle) {
-            setTitle(newTitle);
-            changeEntries();
-        }
-    }}>Edit Title</span>
-            <span className="button">Edit Techs</span>
+                const newTitle = prompt("Enter a new title:");
+                if (newTitle) {
+                    changeEntries(newTitle, submission.technologies);
+                }
+            }}>Edit Title</span>
+            <span className="button" onClick={() => {
+                const newTech = prompt("Enter a new technologies list:");
+                if (newTech) {
+                    changeEntries(submission.title, newTech);
+                }
+            }}>Edit Techs</span>
             <span className="button">Add Comment</span>
         </div>        
 
