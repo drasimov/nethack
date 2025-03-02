@@ -110,33 +110,44 @@ const Dashboard = () => {
     <>
     {session ? (
     <>
-        <p><span className="cWhite serifBold big">Dashboard for {session.user.name}</span></p>
-        <hr/>
-        <p className="cBlue">As a <span className="serifBold">competitor</span>, this is where you can view the progress of the competition and your project.</p>
-        <p className="cYellow">The 2025 Network Hackathon is currently in the&nbsp;
-            <span className = {`qBox ${competitionState == "closed" ? 'serifBold serifUnderline' : ''}`}>Closed
-                <span className="tooltip">The Hackathon is <span className="serifBold">Closed</span>. It is currently not accepting work, meaning you may not edit or submit files at this time.</span>
-            </span>&nbsp;&gt;&nbsp;
-            <span className = {`qBox ${competitionState == "active" ? 'serifBold serifUnderline' : ''}`}>Active
-                <span className="tooltip">The Hackathon is <span className="serifBold">Active</span>. You have this time to complete all aspects of your project submission. Be mindful of the stated deadline and carefully follow the instructions given on this page.</span>
-            </span>&nbsp;&gt;&nbsp;
-            <span className = {`qBox ${competitionState == "judging" ? 'serifBold serifUnderline' : ''}`}>Review
-                <span className="tooltip">The Hackathon is <span className="serifBold">Under Review</span>. You are no longer able to edit your submission as it is being reviewed by judges and packaged for presentation.</span>
-            </span>&nbsp;
-            phase.
-        </p>
-
-        {competitionState == "closed" &&
+        {/* handle access level 0 - visitor.voter */}
+        {session.user.access <1 &&
         <>
-        <br/>
-        <div className="projBox cYellow padBottom">
-            <p className="serifBold med">Hackathon is Closed</p>
-            <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-17T08:59:59Z' ></CountdownMini></span></p>
-        </div>
+            <p>Your account (<span className="serifBold">Visitor/Voter</span>)does not grant you access to this page.</p>
+        </>
+        }
+
+        {/* handle access level 1 - competitor */}
+        {session.user.access == 1 && 
+        <>
+            <p><span className="cWhite serifBold big">Dashboard for {session.user.name}</span></p>
+            <hr/>
+            <p className="cBlue">As a <span className="serifBold">competitor</span>, this is where you can view the progress of the competition and your project.</p>
+            <p className="cYellow">The 2025 Network Hackathon is currently in the&nbsp;
+                <span className = {`qBox ${competitionState == "closed" ? 'serifBold serifUnderline' : ''}`}>Closed
+                    <span className="tooltip">The Hackathon is <span className="serifBold">Closed</span>. It is currently not accepting work, meaning you may not edit or submit files at this time.</span>
+                </span>&nbsp;&gt;&nbsp;
+                <span className = {`qBox ${competitionState == "active" ? 'serifBold serifUnderline' : ''}`}>Active
+                    <span className="tooltip">The Hackathon is <span className="serifBold">Active</span>. You have this time to complete all aspects of your project submission. Be mindful of the stated deadline and carefully follow the instructions given on this page.</span>
+                </span>&nbsp;&gt;&nbsp;
+                <span className = {`qBox ${competitionState == "judging" ? 'serifBold serifUnderline' : ''}`}>Review
+                    <span className="tooltip">The Hackathon is <span className="serifBold">Under Review</span>. You are no longer able to edit your submission as it is being reviewed by judges and packaged for presentation.</span>
+                </span>&nbsp;
+                phase.
+            </p>
+        </>
+        }
+
+        {competitionState == "closed" && session.user.access ==1 &&
+        <>
+            <br/>
+            <div className="projBox cYellow padBottom">
+                <p className="serifBold med">Hackathon is Closed</p>
+                <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-17T08:59:59Z' ></CountdownMini></span></p>
+            </div>
         </>}
-        {/* CHANGE THIS TO active */}
-        {competitionState == "active" && session.user.access >=1 &&
-            <>
+        {competitionState == "active" && session.user.access ==1 &&
+        <>
             <br/>
             <div className="flexBox">
                 <div className="leftBox">
@@ -152,7 +163,6 @@ const Dashboard = () => {
                             {iconCheck} 
                         </label>
                         Checklist Coming Soon</p>
-    
                         {/* <p className="wrapCheckbox"><label className="labelCheckbox">
                             <input type="checkbox" />
                             {iconCheck} 
@@ -240,15 +250,9 @@ const Dashboard = () => {
                 </form>
                 </div>
             </div>
-            </>
-    
+        </>
         }
-        {session.user.access <1 &&
-            <>
-            <p>Your account does not grant you access to this page.</p>
-            </>
-        }
-        {competitionState == "judging" && session.user.access >=1 &&
+        {competitionState == "judging" && session.user.access == 1 &&
             <>
             <br/>
             <div className="flexBox">
@@ -343,14 +347,30 @@ const Dashboard = () => {
                 </div>
             </div>
             </>
-        
+        }
+        {competitionState != "judging" && session.user.access > 1 &&
+        <>
+            <p>Page under construction.</p>
+        </>
         }
 
+        {competitionState == "judging" && session.user.access > 1 &&
+        <>
+            <p><span className="cWhite serifBold big">Dashboard for {session.user.name}</span></p>
+            <hr/>
+            <p className="cBlue">As a <span className="serifBold">Judge</span>, this is where you can access the competition.</p><br/>
+            <p>The Hackathon submissions for 2025R1 can be found below. Some notes:</p>
+            <ul>
+                <li>Totally empty submissions are from students who did not confirm their withdrawal from the competition.</li>
+                <li>Submissions with no title are from students who did not submit a title. It is recommended you give the submission a title. </li>
+            </ul>
+        </>
+        }
     </>
     ):(
-        <>
+    <>
         <p>You need to <b><Link className="button bGray" href = "/login">Login</Link></b> to access this page.</p>
-        </>
+    </>
     )}
     </>
   );

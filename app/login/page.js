@@ -25,7 +25,7 @@ const Login = () => {
             <p>Account type: {session.user.access == 0 ? "Visitor/Voter" : ""}{session.user.access == 1 ? "Competitor" : ""}{session.user.access == 2 ? "Judge" : ""}{session.user.access == 9 ? "Admin" : ""}</p>
             {session.user.access == 1 && <p>Team ID: {session.user.teamID}</p>}
             <br/>
-            {session.user.access == 1 && <p className = "center"><Link href="/dashboard"><span className="button serifBold bBlue">Open My Hackathon Dashboard</span></Link></p>}
+            {session.user.access >= 1 && <p className = "center"><Link href="/dashboard"><span className="button serifBold bBlue">Open My Hackathon Dashboard</span></Link></p>}
         </>
         ):(
         <>
