@@ -5,12 +5,14 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCompetition } from '@/context/CompetitionContext';
 import CountdownMini from '@/components/CountdownMini';
+import Submission from '@/components/Submission';
 
 const Dashboard = () => {
     const { data: session } = useSession();
     const competitionState = useCompetition().competitionState;
     const [entries, setEntries] = useState([]);
     
+    // TODO: implement edit mode and view mode? prevent accidental changes
     const [edit, setEdit] = useState(false);
 
     const [teamID, setTeamID] = useState("");
@@ -23,18 +25,30 @@ const Dashboard = () => {
     const fetchEntries = async () => {
         if(session){
             try {
-                const response = await fetch("/api/sql/pullProject?search=" + session.user.teamID);
-                if (response.ok) {
-                    const data = await response.json();
-                    setEntries(data[0]);
-                    setTitle(data[0]?.title)
-                    setDescription(data[0]?.description)            
-                    setGithub(data[0]?.github)
-                    setPrompt(data[0]?.prompt)
-                    setTechnologies(data[0]?.technologies)
+                if(session.user.access == 1){
+                    const response = await fetch("/api/sql/pullProject?search=" + session.user.teamID);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setEntries(data[0]);
+                        setTitle(data[0]?.title)
+                        setDescription(data[0]?.description)            
+                        setGithub(data[0]?.github)
+                        setPrompt(data[0]?.prompt)
+                        setTechnologies(data[0]?.technologies)
+                    }
+                    else {
+                        console.error("Failed to fetch entries");
+                    }    
                 }
-                else {
-                    console.error("Failed to fetch entries");
+                if(session.user.access > 1){
+                    const response = await fetch("/api/sql/pullProject");
+                    if (response.ok) {
+                        const data = await response.json();
+                        setEntries(data);
+                    }
+                    else {
+                        console.error("Failed to fetch entries");
+                    }    
                 }
             }
             catch (error) {
@@ -116,7 +130,6 @@ const Dashboard = () => {
             <p>Your account (<span className="serifBold">Visitor/Voter</span>)does not grant you access to this page.</p>
         </>
         }
-
         {/* handle access level 1 - competitor */}
         {session.user.access == 1 && 
         <>
@@ -162,6 +175,9 @@ const Dashboard = () => {
                             <input type="checkbox" />
                             {iconCheck} 
                         </label>
+                        {/* TODO: this. Custom checkbox implemented below. Checklist should contain all required 
+                          *       Hackathon deliverables (video, code, title/description) etc */}
+                        {/* TODO: file upload. See Pitch Perfect */}
                         Checklist Coming Soon</p>
                         {/* <p className="wrapCheckbox"><label className="labelCheckbox">
                             <input type="checkbox" />
@@ -171,6 +187,8 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="rightBox">
+                {/* TODO: refactor this. This entire form should be a Component. Pass an argument to the Component
+                  *       to state whether the form should be editable. */}
                 <form onSubmit={changeEntries}>
                     <div className="projBox console">
                         <button type="submit">{iconSave}</button>   
@@ -364,6 +382,14 @@ const Dashboard = () => {
                 <li>Totally empty submissions are from students who did not confirm their withdrawal from the competition.</li>
                 <li>Submissions with no title are from students who did not submit a title. It is recommended you give the submission a title. </li>
             </ul>
+            <div>
+                {console.log(entries)}
+                {entries.map(entry => (
+                    <Submission submission = {entry} user = {session.user.email}></Submission>
+                ))}
+
+            </div>
+
         </>
         }
     </>
