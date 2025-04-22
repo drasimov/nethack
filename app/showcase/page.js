@@ -54,24 +54,25 @@ const Dashboard = () => {
         <>
             <p><span className="cWhite serifBold big">Project Showcase (2025R1)</span></p>
             <hr/>
-            <p className="cBlue">The projects on this page are all <span className="serifBold">original student work</span>, submitted as part of the 2nd Annual BIBS·C Network Hackathon. Participants were given 1 week to develop a project from scratch that responds to one of the Hackathon prompts - from conceptualization to implementation to presentation, students took charge of their projects. Learn more about our Hackathon.</p><br/>
+            <p className="cBlue">The projects on this page are all <span className="serifBold">original student work</span>, submitted as part of the 2nd Annual BIBS·C Network Hackathon. Participants were given 1 week to develop a project from scratch that responds to one of the Hackathon prompts - from conceptualization to implementation to presentation, students took charge of their projects. </p><br/>
             <p>Out of 24 qualifying projects from 65 students across 5 schools, these projects were selected by a panel of judges as exemplary and representative work. A Hackathon is all about applying technology in unique ways to solve practical problems, so projects were assessed on their use of technology, originality, presentation, topicality, and usability. Whenever possible, we have placed the interactive version of their project's on this site; code download is also available. We encourage you to reach out to these students via Teams if you want to learn more about their projects! </p><br/>
 
-            <p><span className="cWhite serifBold med">Our Top 3:</span></p>
-            <p className="cWhite">Our judges were very impressed with the quality of the project submissions this Round, and it was difficult to rank the Finalists. The following projects are all compelling in their own way: <span className="serifBold">Natural Selection Simulation</span> takes first place because of how impressively it embodies the "Theory and Reality" prompt, powerfully demonstrating the power of computational simulation in modeling and communicating scientific theories. Next, <span className="serifBold">Local-Server-Chat</span> explores the very fundamentals of the technology that is found all around us and so often taken for granted, creating a chat server usable by anyone. <span className="serifBold">N-Body Simulation</span> is an exciting project that uses visualization to bring gravitation and our solar system to life.</p>
             <div>
             {entries != "Loading..." && (
                 <>
+                <p><span className="cWhite serifBold med">Our Top 3:</span></p>
+                <p className="cWhite">Our judges were very impressed with the quality of the project submissions this Round, and it was difficult to rank the Finalists. The following projects are all compelling in their own way: <span className="serifBold">Natural Selection Simulation</span> takes first place because of how impressively it embodies the "Theory and Reality" prompt, powerfully demonstrating the power of computational simulation in modeling and communicating scientific theories. Next, <span className="serifBold">Local-Server-Chat</span> explores the very fundamentals of the technology that is found all around us and so often taken for granted, creating a chat server usable by anyone. <span className="serifBold">N-Body Simulation</span> is an exciting project that uses visualization to bring gravitation and our solar system to life.</p>
+
                 <div className = "border gold">
-                    <SubmissionPresent key = "0" submission ={entries[0]} override = {0}></SubmissionPresent>
+                    <SubmissionPresent key = "0" submission ={entries[0]} override = {`/25R1/${entries[0].teamID}/vid.mp4`}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border silver">
-                    <SubmissionPresent key = "1" submission ={entries[1]} override = {0}></SubmissionPresent>
+                    <SubmissionPresent key = "1" submission ={entries[1]} override = {`/25R1/${entries[1].teamID}/vid.mp4`}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border bronze">
-                    <SubmissionPresent key = "2" submission ={entries[2]} override = {0}></SubmissionPresent>
+                    <SubmissionPresent key = "2" submission ={entries[2]} override = {`/25R1/${entries[2].teamID}/vid.mp4`}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <br/>
@@ -86,7 +87,7 @@ const Dashboard = () => {
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border green">
-                    <SubmissionPresent key = "5" submission ={entries[5]} override = {0}></SubmissionPresent>
+                    <SubmissionPresent key = "5" submission ={entries[5]} override = {`/25R1/${entries[5].teamID}/vid.mp4`}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border green">
