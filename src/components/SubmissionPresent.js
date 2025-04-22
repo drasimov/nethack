@@ -26,7 +26,8 @@ const SubmissionPresent = ({submission, override}) => {
 
                         <p className="cWhite"><span className="cYellow serifBold">{submission.prompt} </span>| {submission.description}</p>
                         <br/>
-                        <p>Share me: <a className="console" href={`https://nethack.biszweb.club/showcase#${submission.teamID}`}>https://nethack.biszweb.club/showcase#{submission.teamID}</a></p>
+                        <p>Share URL: <a className="console" href={`https://nethack.biszweb.club/showcase#${submission.teamID}`}>https://nethack.biszweb.club/showcase#{submission.teamID}</a></p>
+                        <p>Download code: {submission.sub_code == "Github" ? <a href={submission.github} target="_blank">View on Github</a> : <a href={`/25R1/${submission.teamID}/${submission.title}.zip`}>Compressed Folder</a>}</p>
                     </div>
                 </div>
             }
