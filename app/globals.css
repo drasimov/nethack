@@ -85,9 +85,6 @@ li{
   margin-top: 10px;
   transition: .5s ease;
 }
-.border:hover{
-  filter: brightness(1.25);
-}
 .award{
   position: absolute;
   top: 0;
