@@ -38,7 +38,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         fetchEntries();
-    }, [session]);
+    },[session]);
 
     const iconAward = (
         // <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-award" viewBox="0 0 16 16">
@@ -54,8 +54,11 @@ const Dashboard = () => {
         <>
             <p><span className="cWhite serifBold big">Project Showcase (2025R1)</span></p>
             <hr/>
-            <p className="cBlue">As a <span className="serifBold">Judge</span>, this is where you can survey and manage the competition submission.</p><br/>
-            <p>The Hackathon submissions for 2025R1 can be found below. Some notes on judging:</p>
+            <p className="cBlue">The projects on this page are all <span className="serifBold">original student work</span>, submitted as part of the 2nd Annual BIBS·C Network Hackathon. Participants were given 1 week to develop a project from scratch that responds to one of the Hackathon prompts - from conceptualization to implementation to presentation, students took charge of their projects. Learn more about our Hackathon.</p><br/>
+            <p>Out of 24 qualifying projects from 65 students across 5 schools, these projects were selected by a panel of judges as exemplary and representative work. A Hackathon is all about applying technology in unique ways to solve practical problems, so projects were assessed on their use of technology, originality, presentation, topicality, and usability. Whenever possible, we have placed the interactive version of their project's on this site; code download is also available. We encourage you to reach out to these students via Teams if you want to learn more about their projects! </p><br/>
+
+            <p><span className="cWhite serifBold med">Our Top 3:</span></p>
+            <p className="cWhite">Our judges were very impressed with the quality of the project submissions this Round, and it was difficult to rank the Finalists. The following projects are all compelling in their own way: <span className="serifBold">Natural Selection Simulation</span> takes first place because of how impressively it embodies the "Theory and Reality" prompt, powerfully demonstrating the power of computational simulation in modeling and communicating scientific theories. Next, <span className="serifBold">Local-Server-Chat</span> explores the very fundamentals of the technology that is found all around us and so often taken for granted, creating a chat server usable by anyone. <span className="serifBold">N-Body Simulation</span> is an exciting project that uses visualization to bring gravitation and our solar system to life.</p>
             <div>
             {entries != "Loading..." && (
                 <>
@@ -71,7 +74,9 @@ const Dashboard = () => {
                     <SubmissionPresent key = "2" submission ={entries[2]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
-
+                <br/>
+                <p><span className="cWhite serifBold med">The remaining Finalists (Honorable Mentions):</span></p>
+                <p className="cWhite">We believe all of Finalist projects were impressive enough to be worth your time exploring, so all of them are presented here. In no particular order, here is another set of diverse and captivating projects:</p>
                 <div className = "border green">
                     <SubmissionPresent key = "3" submission ={entries[3]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
@@ -92,6 +97,9 @@ const Dashboard = () => {
                     <SubmissionPresent key = "7" submission ={entries[7]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
+                <br/>
+                <p className="cWhite">We are immensely proud of all of our participants, and we can honestly say that we learned something new from each project. We will be trying to put up more projects for public viewing in the future, but for now we hope you enjoyed this exhibition of the power of technology. </p>
+
                 </>
             )}
             </div>
