@@ -52,8 +52,8 @@ const Dashboard = () => {
             setTeamID(session.user.teamID)
         }
     }, [session]);
-  return (
-    <>
+    return (
+        <>
             <p><span className="cWhite serifBold big">Project Showcase (2025R1)</span></p>
             <hr/>
             <p className="cBlue">As a <span className="serifBold">Judge</span>, this is where you can survey and manage the competition submission.</p><br/>
@@ -62,11 +62,9 @@ const Dashboard = () => {
                 {entries.map(entry => (
                     <SubmissionPresent key = {entry.teamID} submission ={entry}></SubmissionPresent>
                 ))}
-
             </div>
-
-    </>
-  );
+        </>
+    );
 };
 
 export default Dashboard;
