@@ -9,22 +9,12 @@ import SubmissionPresent from '@/components/SubmissionPresent';
 
 const Dashboard = () => {
     const { data: session } = useSession();
-    const competitionState = useCompetition().competitionState;
     const [entries, setEntries] = useState([]);
-    
-    // TODO: implement edit mode and view mode? prevent accidental changes
-    const [edit, setEdit] = useState(false);
-
-    const [teamID, setTeamID] = useState("");
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [github, setGithub] = useState("");
-    const [prompt, setPrompt] = useState("");
-    const [technologies, setTechnologies] = useState("");
 
     const fetchEntries = async () => {
         if(session){
             try {
+                // TODO: prob modify database schema (i.e. make new fields) so this can be done in 1 api call
                 let winners = ["c0ad4f19", "d34f1c1d", "dbb3b35b", "012ba255", "17b07c3a", "46ff65b7", "f4da2d19", "7fea1e8e"]
                 let all = [];
                 let data;
@@ -48,9 +38,6 @@ const Dashboard = () => {
 
     useEffect(() => {
         fetchEntries();
-        if(session){
-            setTeamID(session.user.teamID)
-        }
     }, [session]);
 
     const iconAward = (
@@ -67,36 +54,36 @@ const Dashboard = () => {
             <p>The Hackathon submissions for 2025R1 can be found below. Some notes on judging:</p>
             <div>
                 <div className = "border gold">
-                    <SubmissionPresent key = "0" submission ={entries[0]}></SubmissionPresent>
+                    <SubmissionPresent key = "0" submission ={entries[0]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border silver">
-                    <SubmissionPresent key = "1" submission ={entries[1]}></SubmissionPresent>
+                    <SubmissionPresent key = "1" submission ={entries[1]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border bronze">
-                    <SubmissionPresent key = "2" submission ={entries[2]}></SubmissionPresent>
+                    <SubmissionPresent key = "2" submission ={entries[2]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
 
                 <div className = "border green">
-                    <SubmissionPresent key = "3" submission ={entries[3]}></SubmissionPresent>
+                    <SubmissionPresent key = "3" submission ={entries[3]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border green">
-                    <SubmissionPresent key = "4" submission ={entries[4]}></SubmissionPresent>
+                    <SubmissionPresent key = "4" submission ={entries[4]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border green">
-                    <SubmissionPresent key = "5" submission ={entries[5]}></SubmissionPresent>
+                    <SubmissionPresent key = "5" submission ={entries[5]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border green">
-                    <SubmissionPresent key = "6" submission ={entries[6]}></SubmissionPresent>
+                    <SubmissionPresent key = "6" submission ={entries[6]} override = "https://david-why.tech/bmplogicsim/"></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
                 <div className = "border green">
-                    <SubmissionPresent key = "7" submission ={entries[7]}></SubmissionPresent>
+                    <SubmissionPresent key = "7" submission ={entries[7]} override = {0}></SubmissionPresent>
                     <div className = "award">{iconAward}</div>
                 </div>
 
