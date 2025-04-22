@@ -24,6 +24,10 @@ import { CompetitionProvider } from '@/context/CompetitionContext';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Network Hackathon Site</title>
+      </head>
       <body>
         <div className = "biggestWrap">
           <Navbar/>
