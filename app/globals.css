@@ -10,6 +10,7 @@ html,
 body {
   height: 100vh;
   max-width: 100vw;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -76,6 +77,33 @@ li{
   border: 1px solid var(--foreground);
   border-radius: 2px;
   width: 100%;
+}
+.border{
+  padding: 4px;
+  border-radius: 2px;
+  position: relative; 
+  margin-top: 10px;
+  transition: .5s ease;
+}
+.border:hover{
+  filter: brightness(1.25);
+}
+.award{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(3) translate(50%, 50%);
+}
+
+.gold{background: linear-gradient(45deg,  #d4af37, #f4cf67)}
+.gold .award{color: #f4cf67}
+.silver{background: linear-gradient(45deg,  #c0c0c0, #e0e0e0)}
+.silver .award{color: #c0c0c0}
+.bronze{background: linear-gradient(45deg,  #cd7f32, #ed9f52)}
+.bronze .award{color: #cd7f32}
+.green{
+  padding: 2px;
+  background: var(--foreground)
 }
 
 textarea{
