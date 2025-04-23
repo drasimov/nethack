@@ -12,7 +12,6 @@ const Dashboard = () => {
     const [entries, setEntries] = useState("Loading...");
 
     const fetchEntries = async () => {
-        if(session){
             try {
                 // TODO: prob modify database schema (i.e. make new fields) so this can be done in 1 api call
                 let winners = ["c0ad4f19", "d34f1c1d", "dbb3b35b", "012ba255", "17b07c3a", "46ff65b7", "f4da2d19", "7fea1e8e"]
@@ -33,7 +32,6 @@ const Dashboard = () => {
             catch (error) {
                 console.error("Error fetching entries: ", error);
             }    
-        }
     };
 
     useEffect(() => {
