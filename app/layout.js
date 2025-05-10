@@ -29,13 +29,15 @@ export default function RootLayout({ children }) {
         <title>Network Hackathon Site</title>
       </head>
       <body>
+        <SessionProvider>
         <div className = "biggestWrap">
           <Navbar/>
           <div className = "bigWrap">
-            <SessionProvider><CompetitionProvider>{children}</CompetitionProvider></SessionProvider>
+            <CompetitionProvider>{children}</CompetitionProvider>
           </div>
           <Footer/>
         </div>
+        </SessionProvider>
       </body>
     </html>
   );
