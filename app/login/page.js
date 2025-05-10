@@ -5,7 +5,7 @@ import { useCompetition } from '@/context/CompetitionContext';
 import Link from "next/link";
 
 const Login = () => {
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const competitionState = useCompetition().competitionState;
 
   return (
@@ -15,7 +15,9 @@ const Login = () => {
         <p className="cBlue">This is the portal for <span className="serifBold">competitor, voter, and judge</span> account login.</p>
         <p className="cYellow">Please note you should login using your <span className = "console">@basischina.com</span> Microsoft email account.</p>
         <div className="console lightBox loginBox cBlack">
-        {session ? (
+        {status === 'loading' ? (
+            <p className="center">Loading...</p>
+        ) : session ? (
         <>
             <p className="center">You are logged in. <span className="button serifBold bWhite" onClick={() => signOut()}>Sign out</span></p>
             <br/>
