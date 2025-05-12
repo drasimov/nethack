@@ -21,7 +21,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
   line-height: 1.5;
-  font-feature-settings: "cv01" 1;
+  font-size: 1.25vw;
+  font-feature-settings:
+    "cv01" 1, /* turn off the dot inside a "0" glyph */
+    "calt" 1; /* turn on "texture healing" */
 }
 
 ::-webkit-scrollbar {
@@ -104,8 +107,15 @@ li{
   background: var(--foreground)
 }
 
+.titleInput {
+  width: 35vw;
+}
+.promptArea {
+  margin-bottom: 0.5vw;
+}
+
 textarea{
-  height: 5vw;
+  /* height: 5vw; */
   resize: vertical;
 }
 
@@ -135,29 +145,17 @@ textarea{
 }
 
 .labelRadio {
-  display: inline-block;
-  position: relative;
   user-select: none;
-  border: 1px solid var(--foreground);
-  border-radius: 100%;
-  width: 1vw;
-  height: 1vw;
   margin-right: 4px;
 }
 .labelRadio input {
   display: none;
 }
-.iconRadio {
-  display: inline-block;
-  border-radius: 100%;
-  opacity: 0; 
-  width: .75vw;
-  height: .75vw;
-  background: var(--foreground);
-  transform: translate(0.05vw, -0.2vw)
+.iconRadio::after {
+  content: "◯";
 }
-.labelRadio input:checked + .iconRadio {
-  opacity: 1; 
+.labelRadio input:checked + .iconRadio::after {
+  content: "◉";
 }
 
 /* custom classes */
@@ -332,35 +330,34 @@ textarea{
 
 @font-face {
   font-family: 'Monaspace Neon';
-  src: url('/fonts/MonaspaceNeon-Regular.woff2') format('woff2'),
-       url('/fonts/MonaspaceNeon-Regular.woff') format('woff');
+  src: url('/fonts/MonaspaceNeonVar.woff2') format('woff2 supports variations'),
+       url('/fonts/MonaspaceNeonVar.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-stretch: 100% 125%;
+  font-style: oblique 0deg 11deg;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Monaspace Neon';
-  src: url('/fonts/MonaspaceNeon-Bold.woff2') format('woff2'),
-       url('/fonts/MonaspaceNeon-Bold.woff') format('woff');
-  font-weight: bold;
-}
-@font-face {
-  font-family: 'Monaspace Neon';
-  src: url('/fonts/MonaspaceNeon-Italic.woff2') format('woff2'),
-       url('/fonts/MonaspaceNeon-Italic.woff') format('woff');
+  src: url('/fonts/MonaspaceNeon-Italic.woff2') format('woff2');
+  font-weight: normal;
   font-style: italic;
-}
-@font-face {
-  font-family: 'Monaspace Neon';
-  src: url('/fonts/MonaspaceNeon-BoldItalic.woff2') format('woff2'),
-       url('/fonts/MonaspaceNeon-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
+  font-display: swap;
 }
 
-@media only screen and (max-width: 880px){
-  hr{
-    width: 80%;
-    margin-top: 0px;
-    margin-left: 2px;
-    margin-bottom: 8px;
-    border: 1px solid #FFF;
-  }
+@font-face {
+  font-family: 'Monaspace Xenon';
+  src: url('/fonts/MonaspaceXenonVar.woff2') format('woff2 supports variations'),
+       url('/fonts/MonaspaceXenonVar.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-stretch: 100% 125%;
+  font-style: oblique 0deg 11deg;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Monaspace Xenon';
+  src: url('/fonts/MonaspaceXenon-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }
