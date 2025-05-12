@@ -16,10 +16,12 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "CMU Serif", serif;
+  font-family: 'Monaspace Neon';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
+  line-height: 1.5;
+  font-feature-settings: "cv01" 1;
 }
 
 ::-webkit-scrollbar {
@@ -55,11 +57,10 @@ p {
   font-size: 1.25vw;
 }
 hr{
-  width: 80%;
-  margin-top: -8px;
+  width: 100%;
   margin-left: 2px;
   margin-bottom: 8px;
-  border: 1px solid #FFF;
+  border-bottom: 1px solid white;
 }
 li{
   list-style-position: inside;
@@ -187,10 +188,8 @@ textarea{
 .medBig{font-size: 2vw}
 .big{font-size: 2.5vw}
 
-.console{ font-family: 'Courier New', Courier, monospace}
-.serif{ font-family: 'CMU Serif', serif}
-.serifBold{ font-family: 'CMU Serif Bold', serif}
-.serifItalic{ font-family: 'CMU Serif Italic', serif}
+.serifBold{ font-weight: bold; }
+.serifItalic{ font-style: italic }
 .serifUnderline{ text-decoration: underline}
 
 .link{ text-decoration:underline}
@@ -330,23 +329,30 @@ textarea{
     color-scheme: dark;
   }
 }
+
 @font-face {
-  font-family: 'CMU Serif';
-  src: url('/fonts/CMUNRM.TTF') format('truetype'); 
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Monaspace Neon';
+  src: url('/fonts/MonaspaceNeon-Regular.woff2') format('woff2'),
+       url('/fonts/MonaspaceNeon-Regular.woff') format('woff');
 }
 @font-face {
-  font-family: 'CMU Serif Bold';
-  src: url('/fonts/CMUNBX.TTF') format('truetype'); 
+  font-family: 'Monaspace Neon';
+  src: url('/fonts/MonaspaceNeon-Bold.woff2') format('woff2'),
+       url('/fonts/MonaspaceNeon-Bold.woff') format('woff');
   font-weight: bold;
-  font-style: normal;
 }
 @font-face {
-  font-family: 'CMU Serif Italic';
-  src: url('/fonts/CMUNTI.TTF') format('truetype'); 
-  font-weight: italic;
-  font-style: normal;
+  font-family: 'Monaspace Neon';
+  src: url('/fonts/MonaspaceNeon-Italic.woff2') format('woff2'),
+       url('/fonts/MonaspaceNeon-Italic.woff') format('woff');
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Monaspace Neon';
+  src: url('/fonts/MonaspaceNeon-BoldItalic.woff2') format('woff2'),
+       url('/fonts/MonaspaceNeon-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
 }
 
 @media only screen and (max-width: 880px){

@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta name="robots" content="noindex, nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Network Hackathon Site</title>
       </head>
       <body>
