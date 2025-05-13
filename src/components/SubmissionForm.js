@@ -16,7 +16,7 @@ const iconCheck = (
     </span>
 )
 
-export default function SubmissionForm({ children, teamID, readonly }) {
+export default function SubmissionForm({ children, teamID, readonly, onUpdate }) {
     const [members, setMembers] = useState("");
 
     const [title, setTitle] = useState("");
@@ -66,6 +66,7 @@ export default function SubmissionForm({ children, teamID, readonly }) {
 
             const result = await response.json();
             if (response.ok) {
+                onUpdate();
                 fetchEntry();
             } else {
                 console.error('Error: ' + result.message);
@@ -77,7 +78,6 @@ export default function SubmissionForm({ children, teamID, readonly }) {
 
     useEffect(() => {
         fetchEntry();
-        console.log("USE EFFECT CALLED")
     }, []);  // empty array means this runs only once on mount, not on re-render
 
     return (

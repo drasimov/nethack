@@ -17,7 +17,7 @@ export default function DashboardCompetitor() {
             <h1>Dashboard for {session.user.name}</h1>
             <hr/>
             <p className="cBlue">As a <span className="serifBold">competitor</span>, this is where you can view the progress of the competition and your project.</p>
-            <p className="cYellow">The 2025 Network Hackathon is currently in the&nbsp;
+            <p className="cYellow padEnd">The 2025 Network Hackathon is currently in the&nbsp;
                 <span className = {`qBox ${competitionState == "closed" ? 'serifBold serifUnderline' : ''}`}>Closed
                     <span className="tooltip">The Hackathon is <span className="serifBold">Closed</span>. It is currently not accepting work, meaning you may not edit or submit files at this time.</span>
                 </span>&nbsp;&gt;&nbsp;

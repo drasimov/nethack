@@ -50,6 +50,7 @@ a {
 }
 .sub a{
   text-decoration: underline;
+  cursor: pointer;
 }
 .sub{
   white-space: nowrap;
@@ -66,8 +67,9 @@ hr{
   border-bottom: 1px solid white;
 }
 li{
+  list-style-type: "- ";
   list-style-position: inside;
-  font-size: 1vw;
+  font-size: 1.25vw;
 }
 .txtBox{
   background: rgba(0,0,0,0);
@@ -180,7 +182,7 @@ textarea{
 
 .center{text-align:center}
 
-.small{font-size: 0.5vw}
+.small{font-size: 0.75vw}
 .smallMed{font-size: 1vw}
 .med{font-size: 1.5vw}
 .medBig{font-size: 2vw}
@@ -191,6 +193,8 @@ textarea{
 .serifUnderline{ text-decoration: underline}
 
 .link{ text-decoration:underline}
+
+.padEnd { padding-bottom: 10px; }
 
 /* elements */
 .lightBox{
