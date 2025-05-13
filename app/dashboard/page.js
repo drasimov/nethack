@@ -5,41 +5,20 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCompetition } from '@/context/CompetitionContext';
 import Submission from '@/components/Submission';
-import CompetitorDashboard from '@/components/CompetitorDashboard';
+import DashboardCompetitor from '@/components/DashboardCompetitor';
+import DashboardJudge from '@/components/DashboardJudge';
 
 const Dashboard = () => {
-    const { data: session } = useSession();
+    const { data: session, status: authStatus } = useSession();
     const competitionState = useCompetition().competitionState;
     const [entries, setEntries] = useState([]);
     
     // TODO: implement edit mode and view mode? prevent accidental changes
     const [edit, setEdit] = useState(false);
 
-    const [teamID, setTeamID] = useState("");
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [github, setGithub] = useState("");
-    const [prompt, setPrompt] = useState("");
-    const [technologies, setTechnologies] = useState("");
-
     const fetchEntries = async () => {
         if(session){
             try {
-                if(session.user.access == 1){
-                    const response = await fetch("/api/sql/pullProject?search=" + session.user.teamID);
-                    if (response.ok) {
-                        const data = await response.json();
-                        setEntries(data[0]);
-                        setTitle(data[0]?.title)
-                        setDescription(data[0]?.description)            
-                        setGithub(data[0]?.github)
-                        setPrompt(data[0]?.prompt)
-                        setTechnologies(data[0]?.technologies)
-                    }
-                    else {
-                        console.error("Failed to fetch entries");
-                    }    
-                }
                 if(session.user.access > 1){
                     const response = await fetch("/api/sql/pullProject");
                     if (response.ok) {
@@ -64,9 +43,6 @@ const Dashboard = () => {
 
     useEffect(() => {
         fetchEntries();
-        if(session){
-            setTeamID(session.user.teamID)
-        }
     }, [session]);
 
   return (
@@ -81,41 +57,16 @@ const Dashboard = () => {
         }
         {/* handle access level 1 - competitor */}
         {session.user.access == 1 && 
-            <CompetitorDashboard />
+            <DashboardCompetitor />
         }
-        {competitionState != "judging" && session.user.access > 1 &&
-        <>
-            <p>Page under construction.</p>
-        </>
+        {/* handle access level 2 - judge */}
+        {session.user.access > 1 &&
+            <DashboardJudge />
         }
-
-        {competitionState == "judging" && session.user.access > 1 &&
-        <>
-            <p><span className="cWhite serifBold big">Dashboard for {session.user.name}</span></p>
-            <hr/>
-            <p className="cBlue">As a <span className="serifBold">Judge</span>, this is where you can survey and manage the competition submission.</p><br/>
-            <p>The Hackathon submissions for 2025R1 can be found below. Some notes on judging:</p>
-            <ul>
-                <li>Code, Video, and Project Information (title, description) should be mandatory.</li>
-                <li>Github and Technologies list was explicitly stated to be optional. </li>
-                <li>Submissions are uniquely identified by teamID.</li>
-            </ul><br/>
-            <p>Some additional notes:</p>
-            <ul>
-                <li>Since these submissions will eventually be displayed on this site, it is better for submissions to have proper titles and technologies lists</li>
-                <li>A very basic tool is given on the upper-right corner for you to edit these as needed. This will directly change the entries in our Hackathon database</li>
-                <li>Links are included for your convenience. However, some may be broken/locked behind login; you may need to go back to the Teams assignment page to see the submission</li>
-                <li>Additional judging features should be available for future rounds (e.g. Add Comment). For now we suggest you keep organized in external documents :(</li>
-            </ul>
-            <div>
-                {entries.map(entry => (
-                    <Submission key = {entry.teamID} submission ={entry} user={session.user} onUpdate={refreshData}></Submission>
-                ))}
-
-            </div>
-
-        </>
-        }
+    </>
+    ) : authStatus === "loading" ? (
+    <>
+        <p>Loading...</p>
     </>
     ):(
     <>
