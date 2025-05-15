@@ -16,10 +16,15 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "CMU Serif", serif;
+  font-family: 'Monaspace Neon';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
+  line-height: 1.5;
+  font-size: 1.25vw;
+  font-feature-settings:
+    "cv01" 1, /* turn off the dot inside a "0" glyph */
+    "calt" 1; /* turn on "texture healing" */
 }
 
 ::-webkit-scrollbar {
@@ -45,6 +50,7 @@ a {
 }
 .sub a{
   text-decoration: underline;
+  cursor: pointer;
 }
 .sub{
   white-space: nowrap;
@@ -55,15 +61,15 @@ p {
   font-size: 1.25vw;
 }
 hr{
-  width: 80%;
-  margin-top: -8px;
+  width: 100%;
   margin-left: 2px;
   margin-bottom: 8px;
-  border: 1px solid #FFF;
+  border-bottom: 1px solid white;
 }
 li{
+  list-style-type: "- ";
   list-style-position: inside;
-  font-size: 1vw;
+  font-size: 1.25vw;
 }
 .txtBox{
   background: rgba(0,0,0,0);
@@ -103,8 +109,15 @@ li{
   background: var(--foreground)
 }
 
+.titleInput {
+  width: 35vw;
+}
+.promptArea {
+  margin-bottom: 0.5vw;
+}
+
 textarea{
-  height: 5vw;
+  /* height: 5vw; */
   resize: vertical;
 }
 
@@ -134,29 +147,17 @@ textarea{
 }
 
 .labelRadio {
-  display: inline-block;
-  position: relative;
   user-select: none;
-  border: 1px solid var(--foreground);
-  border-radius: 100%;
-  width: 1vw;
-  height: 1vw;
   margin-right: 4px;
 }
 .labelRadio input {
   display: none;
 }
-.iconRadio {
-  display: inline-block;
-  border-radius: 100%;
-  opacity: 0; 
-  width: .75vw;
-  height: .75vw;
-  background: var(--foreground);
-  transform: translate(0.05vw, -0.2vw)
+.iconRadio::after {
+  content: "◯";
 }
-.labelRadio input:checked + .iconRadio {
-  opacity: 1; 
+.labelRadio input:checked + .iconRadio::after {
+  content: "◉";
 }
 
 /* custom classes */
@@ -181,19 +182,19 @@ textarea{
 
 .center{text-align:center}
 
-.small{font-size: 0.5vw}
+.small{font-size: 0.75vw}
 .smallMed{font-size: 1vw}
 .med{font-size: 1.5vw}
 .medBig{font-size: 2vw}
 .big{font-size: 2.5vw}
 
-.console{ font-family: 'Courier New', Courier, monospace}
-.serif{ font-family: 'CMU Serif', serif}
-.serifBold{ font-family: 'CMU Serif Bold', serif}
-.serifItalic{ font-family: 'CMU Serif Italic', serif}
+.serifBold{ font-weight: bold; }
+.serifItalic{ font-style: italic }
 .serifUnderline{ text-decoration: underline}
 
 .link{ text-decoration:underline}
+
+.padEnd { padding-bottom: 10px; }
 
 /* elements */
 .lightBox{
@@ -330,31 +331,37 @@ textarea{
     color-scheme: dark;
   }
 }
+
 @font-face {
-  font-family: 'CMU Serif';
-  src: url('/fonts/CMUNRM.TTF') format('truetype'); 
+  font-family: 'Monaspace Neon';
+  src: url('/fonts/MonaspaceNeonVar.woff2') format('woff2 supports variations'),
+       url('/fonts/MonaspaceNeonVar.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-stretch: 100% 125%;
+  font-style: oblique 0deg 11deg;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Monaspace Neon';
+  src: url('/fonts/MonaspaceNeon-Italic.woff2') format('woff2');
   font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'CMU Serif Bold';
-  src: url('/fonts/CMUNBX.TTF') format('truetype'); 
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'CMU Serif Italic';
-  src: url('/fonts/CMUNTI.TTF') format('truetype'); 
-  font-weight: italic;
-  font-style: normal;
+  font-style: italic;
+  font-display: swap;
 }
 
-@media only screen and (max-width: 880px){
-  hr{
-    width: 80%;
-    margin-top: 0px;
-    margin-left: 2px;
-    margin-bottom: 8px;
-    border: 1px solid #FFF;
-  }
+@font-face {
+  font-family: 'Monaspace Xenon';
+  src: url('/fonts/MonaspaceXenonVar.woff2') format('woff2 supports variations'),
+       url('/fonts/MonaspaceXenonVar.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-stretch: 100% 125%;
+  font-style: oblique 0deg 11deg;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Monaspace Xenon';
+  src: url('/fonts/MonaspaceXenon-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }

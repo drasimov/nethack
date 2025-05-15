@@ -9,7 +9,8 @@ const Navbar = () => {
     <div className={styles.nav}>
         <div className={styles.wrap}>
             <Link href = "/">BIBS·C Network Hackathon</Link>
-            <Link href = "/login" className = {`${styles.right} med`}>{authStatus === 'authenticated' ? 'Logout' : 'Login'}</Link>
+            <span className={styles.fill}></span>
+            <Link href = "/login" className = "med">{authStatus === 'authenticated' ? 'Logout' : 'Login'}</Link>
         </div>
     </div>
   );
