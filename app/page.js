@@ -26,8 +26,8 @@ const Home = () => {
         <Link href="/login" className="cBlue link">&gt;&gt;&gt; Login to your account here!</Link>
       </p> : <p>&nbsp;</p>}
       <center className="console">
-        <Countdown key={0} targetDate={countdownDates[0]} label="Registration Closes"/>
-        <Countdown key={1} targetDate={countdownDates[1]} label="Prompts Release"/>
+        {/* <Countdown key={0} targetDate={countdownDates[0]} label="Registration Closes"/>
+        <Countdown key={1} targetDate={countdownDates[1]} label="Prompts Release"/> */}
         <Countdown key={2} targetDate={countdownDates[2]} label="Submission Closes"/>
       </center>
     </div>
