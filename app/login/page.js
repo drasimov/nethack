@@ -28,6 +28,11 @@ const Login = () => {
             {session.user.access == 1 && <p>Team ID: {session.user.teamID}</p>}
             <br/>
             {session.user.access >= 1 && <p className = "center"><Link href="/dashboard"><span className="button serifBold bBlue">Open My Hackathon Dashboard</span></Link></p>}
+            {session.user.access == 0 && <>
+                <p className = "center"><a href="https://forms.cloud.microsoft/r/3t7EywybWw"><span className="button serifBold bBlue">Sign up for the Hackathon</span></a></p>
+                <br/>
+                <p className="serifItalic">Signed up and approved? Please sign out and then login to view your dashboard!</p>
+            </>}
         </>
         ):(
         <>
