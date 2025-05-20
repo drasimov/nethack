@@ -9,7 +9,7 @@ const Home = () => {
   const countdownDates = [
     '2025-05-16T23:59:59+0800', 
     '2025-05-17T23:59:59+0800', 
-    '2025-05-23T23:59:59+0800',
+    '2025-05-30T23:59:59+0800',
   ];
 
   const { status, data: session } = useSession();
