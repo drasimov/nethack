@@ -142,36 +142,14 @@ export default function SubmissionForm({ children, teamID, readonly, onUpdate })
                                     <p className="wrapRadio"><label className="labelRadio">
                                         <input 
                                             type="radio" 
-                                            value="Wiring and computing" 
-                                            checked={prompt === 'Wiring and computing'} 
+                                            value="Game Jam" 
+                                            checked={prompt === 'Game Jam'} 
                                             onChange={(e) => setPrompt(e.target.value)}
                                             disabled={readonly}
                                         />  
                                         <span className="iconRadio"></span>
                                     </label>
-                                    Wires and computing</p>
-                                    <p className="wrapRadio"><label className="labelRadio">
-                                        <input 
-                                            type="radio" 
-                                            value="Culture and humanity" 
-                                            checked={prompt === 'Culture and humanity'} 
-                                            onChange={(e) => setPrompt(e.target.value)} 
-                                            disabled={readonly}
-                                        />
-                                        <span className="iconRadio"></span>
-                                    </label>
-                                    Culture and humanity</p>
-                                    <p className="wrapRadio"><label className="labelRadio">
-                                        <input 
-                                            type="radio" 
-                                            value="Theory and reality" 
-                                            checked={prompt === 'Theory and reality'} 
-                                            onChange={(e) => setPrompt(e.target.value)} 
-                                            disabled={readonly}
-                                        />
-                                        <span className="iconRadio"></span>
-                                    </label>
-                                    Theory and reality</p>
+                                    Game Jam</p>
                                 </div>
                                 <span className="inputWrap">
                                     List of technologies (optional)
