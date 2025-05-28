@@ -42,7 +42,7 @@ export default function DashboardCompetitor() {
                     {isActive &&
                     <>
                         <p className="serifBold med">Hackathon is Active</p>
-                        <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-02-23T23:59:59Z' ></CountdownMini></span></p>
+                        <p>Time remaining: <span className="bSmooth console"><CountdownMini targetDate='2025-05-30T23:59:59+0800' ></CountdownMini></span></p>
                     </>}
                     {isJudging &&
                     <>
