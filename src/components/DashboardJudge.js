@@ -72,6 +72,7 @@ export default function DashboardJudge() {
                         <p>You can add information such as technologies and title.</p>
                     </SubmissionForm>
                     :
+                    entry.round == "25R2" &&
                     <Submission key = {entry.teamID} submission ={entry} user={session.user} onEdit={() => setEditing(entry.teamID)}></Submission>
                 ))}
 
