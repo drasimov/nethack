@@ -38,13 +38,13 @@ export default function DashboardJudge() {
         fetchEntries();
     }, []);
 
-    if (competitionState !== "judging") {
-        return (
-            <>
-                <p>Page under construction.</p>
-            </>
-        );
-    }
+    // if (competitionState !== "judging") {
+    //     return (
+    //         <>
+    //             <p>Page under construction.</p>
+    //         </>
+    //     );
+    // }
 
     return (
         <>
